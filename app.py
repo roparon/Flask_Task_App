@@ -11,7 +11,10 @@ def tasks():
 @app.route('/about')
 def about():
     return '''<h1>About Us!</h1>
-    <p>This is my first flask-app page. Come on! let's learn new things together!😊</p>'''
+    <p>Hey there! 👋 This is a little project I built using Flask — a lightweight, super cool Python web framework. It’s my way of learning web development step by step, one line of code at a time.
+Whether you’re a beginner like me or just curious about Flask, you’re totally welcome here! Let’s grow, code, and explore this exciting world of web apps together. 🚀
+
+Thanks for stopping by — and keep learning! 😊</p>'''
 
 
 
