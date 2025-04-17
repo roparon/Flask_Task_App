@@ -9,8 +9,12 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable=False)
     tasks = db.relationship('Task', backref='user', lazy=True)
 
-    def __repr__(self):
-        return f"User('{self.first_name}', '{self.last_name}')"
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    def display_user(self):
+        return f"Full Name: {self.full_name()}"
+
 
 
 class Task(db.Model):
