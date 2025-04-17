@@ -10,7 +10,7 @@ class User(db.Model):
     tasks = db.relationship('Task', backref='user', lazy=True)
 
 def __repr__(self):
-        return f"User(''{self.first_name}', '{self.last_name}')"
+        return f"User('{self.first_name}', '{self.last_name}')"
 
 
 
