@@ -10,7 +10,7 @@
     <ul style="list-style-type: none;">
     {% for user in users %}
         <li style="color: aqua;">
-            {{ loop.index  }}. {{ user.first_name }} {{ user.last_name }}
+            {{ loop.index }} {{ user.first_name }} {{ user.last_name }}
         </li>
     {% endfor %}
     </ul>
