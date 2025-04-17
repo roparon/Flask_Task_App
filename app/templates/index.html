@@ -7,14 +7,12 @@
 </head>
 <body>
     <h1>Users</h1>
-    <p>{{ users }}</p>
     <ul>
         {% for user in users %}
-        <li>
-            {{ user.username }}
-        </li>
+            <li>
+                {{ user.first_name }} {{ user.last_name }}
+            </li>
         {% endfor %}
     </ul>
-    
 </body>
 </html>
