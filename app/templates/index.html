@@ -6,13 +6,13 @@ Home - Flask Task App
 
 {% block content %}
 <div class="container text-center mt-5">
-    <h1 class="display-4" style="text-decoration:aquamarine">Welcome to Flask Task App!</h1>
-    <p class="lead">Manage your tasks efficiently and stay organized.</p>
-    <hr class="my-4" style="background-color: rgb(247, 35, 7); height: 2px;">
-    <p class="text-decoration-primary-bg">Get started by exploring the features below:</p>
+    <h1 style="color: rgb(73, 194, 93);" class="display-4">Welcome to Flask Task App!</h1>
+    <p style="color: rgb(100, 175, 150);" class="lead">Manage your tasks efficiently and stay organized.</p>
+    <hr style="color: rgb(7, 7, 236);" class="my-4">
+    <p style="color: rgb(100, 175, 150);">Get started by exploring the features below:</p>
     <div class="d-flex justify-content-center gap-3">
-        <a href="{{ url_for('tasks') }}" class="btn btn-primary btn-md">View Tasks</a>
-        <a href="{{ url_for('users') }}" class="btn btn-secondary btn-md">Manage Users</a>
+        <a href="{{ url_for('tasks') }}" style="color: aqua;" class="btn btn-primary btn-md">View Tasks</a>
+        <a href="{{ url_for('users') }}" style="color: aqua;" class="btn btn-secondary btn-md">Manage Users</a>
     </div>
 </div>
 {% endblock %}
