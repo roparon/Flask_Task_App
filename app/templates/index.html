@@ -1,12 +1,25 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask_Task_App</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('tasks') }}">Tasks</a></li>
+            <li><a href="{{ url_for('users') }}">Users</a></li>
+        </ul>
+    </nav>
 
-{% block content %}
-<h1>Users</h1>
-<ul style="list-style-type: none;">
-{% for user in users %}
-    <li style="color: aqua;">
-        {{ loop.index }} {{ user.first_name }} {{ user.last_name }}
-    </li>
-{% endfor %}
-</ul>
-{% endblock %}
+    {% block content %}
+    {% endblock %}
+
+    <footer class="bg-secondary text-white text-center py-0 mt-auto position-sticky bottom-0">
+        <p>&copy; 2025 Flask_Task_App<i class="text-decoration-underline">-all rights reserved</i></p>
+    </footer>
+    
+</body>
+</html>
