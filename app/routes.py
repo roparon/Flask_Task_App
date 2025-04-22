@@ -10,3 +10,9 @@ def home():
 @app.route('/tasks')
 def tasks():
     return render_template('tasks.html', title='Tasks')
+
+
+@app.route('/users')
+def users():
+    users = User.query.all()
+    return render_template('users.html', users=users, title='Users')

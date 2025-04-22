@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask_Task_App</title>
-</head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('tasks') }}">Tasks</a></li>
-            <li><a href="{{ url_for('users') }}">Users</a></li>
-        </ul>
-    </nav>
+{% extends 'base.html' %}
 
-    {% block content %}
-    {% endblock %}
+{% block title %}
+Home - Flask Task App
+{% endblock %}
 
-    <footer class="bg-secondary text-white text-center py-0 mt-auto position-sticky bottom-0">
-        <p>&copy; 2025 Flask_Task_App<i class="text-decoration-underline">-all rights reserved</i></p>
-    </footer>
-    
-</body>
-</html>
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="display-4" style="text-decoration:aquamarine">Welcome to Flask Task App!</h1>
+    <p class="lead">Manage your tasks efficiently and stay organized.</p>
+    <hr class="my-4" style="background-color: rgb(247, 35, 7); height: 2px;">
+    <p class="text-decoration-primary-bg">Get started by exploring the features below:</p>
+    <div class="d-flex justify-content-center gap-3">
+        <a href="{{ url_for('tasks') }}" class="btn btn-primary btn-md">View Tasks</a>
+        <a href="{{ url_for('users') }}" class="btn btn-secondary btn-md">Manage Users</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
