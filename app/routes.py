@@ -5,4 +5,8 @@ from app.models import User
 @app.route('/')
 def home():
     users = User.query.all()
-    return render_template('index.html', users=users)
+    return render_template('index.html', users=users, title='Home Page')
+
+@app.route('/tasks')
+def tasks():
+    return render_template('tasks.html', title='Tasks')
