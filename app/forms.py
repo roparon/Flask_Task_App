@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, TextAreaField, BooleanField
 
 
 class TaskForm(FlaskForm):
     title = StringField('Title')
-    description = StringField('Description')
-    submit = SubmitField('Submit')
+    description = TextAreaField('Description')
+    completed = BooleanField('Completed')
