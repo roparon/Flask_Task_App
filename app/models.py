@@ -6,7 +6,7 @@ class User(db.Model):
     user_name = db.Column(db.String(50), nullable=False, unique=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    password = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(50), nullable=False)
     tasks = db.relationship('Task', backref='user', lazy=True)
 
 def __repr__(self):

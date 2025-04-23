@@ -2,6 +2,7 @@ from flask import render_template
 from app import app
 from app.models import User
 from app.forms import TaskForm
+from app.forms import UserForm
 
 @app.route('/')
 def home():
@@ -15,4 +16,5 @@ def tasks():
 
 @app.route('/users', methods=['GET', 'POST'])
 def users():
-    return render_template('users.html', users=User.query.all(), title='Users')
+    form = UserForm()
+    return render_template('users.html', users=User.query.all(), title='Users', user_form=form)

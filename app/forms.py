@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, BooleanField, SubmitField
+from wtforms import StringField, TextAreaField, BooleanField, SubmitField,PasswordField
 
 class TaskForm(FlaskForm):
    title = StringField('Task Title')
@@ -8,7 +8,8 @@ class TaskForm(FlaskForm):
    submit = SubmitField('Submit')
 
 class UserForm(FlaskForm):
-   user_name = StringField('User Name')
-   first_name = StringField('First Name')
-   last_name = StringField('Last Name')
+   user_name = StringField('User_Name')
+   first_name = StringField('First_Name')
+   last_name = StringField('Last _Name')
+   password = PasswordField('Password')
    submit = SubmitField('Submit')
