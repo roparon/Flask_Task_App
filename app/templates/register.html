@@ -3,7 +3,8 @@
 {% block content %}
 <h1 class="mb-4" style="text-decoration: underline; color:rgb(73, 194, 93);">Register.</h1>
 
-<form action="{{ url_for('register') }}" method="post">
+<form action="{{ url_for('users') }}" method="post">
+    {{ user_form.csrf_token() }}
     {{ user_form.user_name.label(class="form-label") }}{{ user_form.user_name(size=50, class="form-control w-50") }}
 
     {{ user_form.first_name.label(class="form-label") }}{{ user_form.first_name(size=50, class="form-control w-50") }}
