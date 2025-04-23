@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <h1 class="text-primary">Tasks</h1>
-<form action="" method="post"></form>
+<form action="" method="post">
+{{ form.task.lable }}
+{{ form.task.title size=100 }}
+{{ form.task.description }}
+{{ form.task.completed }}
+</form>
 {% endblock %}
