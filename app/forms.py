@@ -12,4 +12,4 @@ class UserForm(FlaskForm):
    first_name = StringField('First_Name')
    last_name = StringField('Last _Name')
    password = PasswordField('Password')
-   submit = SubmitField('Submit')
+   submit = SubmitField('Register')

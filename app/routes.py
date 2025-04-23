@@ -11,10 +11,17 @@ def home():
 @app.route('/tasks')
 def tasks():
     form = TaskForm()
+    if form.validate_on_submit():
+        new_user = User(
+            user_name=form.user_name.data,
+            first_name=form.first_name.data,
+            last_name=form.last_name.data,
+            password=form.password.data
+        )
     return render_template('tasks.html', title='Tasks', task_form=form)
 
 
-@app.route('/users', methods=['GET', 'POST'])
-def users():
+@app.route('/register', methods=['POST'])
+def register():
     form = UserForm()
-    return render_template('users.html', users=User.query.all(), title='Users', user_form=form)
+    return render_template('register.html', users=User.query.all(), title='Users', user_form=form)
