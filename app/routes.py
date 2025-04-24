@@ -30,16 +30,17 @@ def tasks():
     form = TaskForm()
     if form.validate_on_submit():
         new_task = Task(
-            task_name=form.task_name.data,
-            task_description=form.task_description.data,
+            title=form.title.data,
+            description=form.description.data,
             completed=form.completed.data,
             user_id=1
             )
         db.session.add(new_task)
         db.session.commit()
-        flash(f'Task "{new_task.title}" addeds successfully!', 'success')
-        return redirect(url_for('users'))
-    return render_template('tasks.html', title='Tasks', task_form=form)
+        flash(f'"{new_task.title}" added successfully!', 'success')
+        return redirect(url_for('tasks'))
+    tasks = Task.query.all()
+    return render_template('tasks.html', title='Tasks', task_form=form, tasks=tasks)
 
 
 
@@ -48,5 +49,13 @@ def toggle_task(task_id):
     task = Task.query.get_or_404(task_id)
     task.completed = not task.completed
     db.session.commit()
-    flash(f'Task {task.title} status update','success')
+    flash(f'{task.title} - status updated successfully!','success')
+    return redirect(url_for('tasks'))
+
+@app.route('/delete_task/<int:task_id>', methods=["POST"])
+def delete_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    db.session.delete(task)
+    db.session.commit()
+    flash(f'Task "{task.title}" has been deleted successfully!', 'success')
     return redirect(url_for('tasks'))

@@ -2,28 +2,48 @@
 {% block content %}
 <h1 class="text-primary">Tasks</h1>
 <form action="" method="post">
-    {{ form.hidden_tag() }}
-{{ task_form.title.label(class="form-label")}}{{ task_form.title(size=100, class="form-control w-50") }}
-
-{{ task_form.description.label(class="form-label") }}{{ task_form.description(class="form-control w-50") }}
-
-{{ task_form.completed.label(class="form-label") }}{{ task_form.completed }}<br>
-{{ task_form.submit }}
+    {{ task_form.hidden_tag() }}
+    {{ task_form.title.label(class="form-label") }}
+    {{ task_form.title(class="form-control w-50") }}
+    {{ task_form.description.label(class="form-label") }}
+    {{ task_form.description(class="form-control w-50") }}
+    {{ task_form.completed.label(class="form-check-label") }}
+    {{ task_form.completed(class="form-check-input") }}
+    {{ task_form.submit(class="btn btn-primary mt-3") }}
 </form>
-<h2 class="text-secondary">Task List</h2>
+
+<h2 class="text-secondary mt-4">Task List</h2>
 <div class="list-group">
     {% for task in tasks %}
-    <form action="{{ url_for('toggle_task', task_id=task.id) }}" method="post" style="display: inline;">
+    <form action="{{ url_for('toggle_task', task_id=task.task_id) }}" method="post" style="display: inline;">
         <input type="checkbox"
             {% if task.completed %} checked {% endif %}
             onchange="this.form.submit()"
-            id="task-{{ task.id }}"
+            id="task-{{ task.task_id }}"
             title="Mark task as completed">
     </form>
-    <label for="task-{{ task.id }}" class="list-group-item">
+    <label for="task-{{ task.task_id }}" class="list-group-item">
         {{ loop.index }}. {{ task.title }}
     </label>
-    <p>{{ task.description }}</p>
+    <span>{{ task.description }}</span>
+    {% endfor %}
+</div>
+<div class="list-group">
+    {% for task in tasks %}
+    <form action="{{ url_for('toggle_task', task_id=task.task_id) }}" method="post" style="display: inline;">
+        <input type="checkbox"
+            {% if task.completed %} checked {% endif %}
+            onchange="this.form.submit()"
+            id="task-{{ task.task_id }}"
+            title="Mark task as completed">
+    </form>
+    <label for="task-{{ task.task_id }}" class="list-group-item">
+        {{ loop.index }}. {{ task.title }}
+    </label>
+    <span>{{ task.description }}</span>
+    <form action="{{ url_for('delete_task', task_id=task.task_id) }}" method="post" style="display: inline;">
+        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+    </form>
     {% endfor %}
 </div>
 {% endblock %}
