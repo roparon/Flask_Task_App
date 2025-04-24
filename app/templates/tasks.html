@@ -26,21 +26,6 @@
         {{ loop.index }}. {{ task.title }}
     </label>
     <span>{{ task.description }}</span>
-    {% endfor %}
-</div>
-<div class="list-group">
-    {% for task in tasks %}
-    <form action="{{ url_for('toggle_task', task_id=task.task_id) }}" method="post" style="display: inline;">
-        <input type="checkbox"
-            {% if task.completed %} checked {% endif %}
-            onchange="this.form.submit()"
-            id="task-{{ task.task_id }}"
-            title="Mark task as completed">
-    </form>
-    <label for="task-{{ task.task_id }}" class="list-group-item">
-        {{ loop.index }}. {{ task.title }}
-    </label>
-    <span>{{ task.description }}</span>
     <form action="{{ url_for('delete_task', task_id=task.task_id) }}" method="post" style="display: inline;">
         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
     </form>
