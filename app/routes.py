@@ -42,6 +42,11 @@ def tasks():
     tasks = Task.query.all()
     return render_template('tasks.html', title='Tasks', task_form=form, tasks=tasks)
 
+@app.route('/user_list', methods=['GET'])
+def user_list():
+    users = User.query.all()
+    return render_template('user_list.html', title='User List', users=users)
+
 
 
 @app.route('/toggle_task/<int:task_id>',methods=["POST"])
