@@ -2,6 +2,7 @@
 {% block content %}
 <h1 class="text-primary">Tasks</h1>
 <form action="" method="post">
+    {{ form.hidden_tag() }}
 {{ task_form.title.label(class="form-label")}}{{ task_form.title(size=100, class="form-control w-50") }}
 {{ task_form.description.label(class="form-label") }}{{ task_form.description(class="form-control w-50") }}
 {{ task_form.completed.label(class="form-label") }}{{ task_form.completed }}<br>
