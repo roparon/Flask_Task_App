@@ -4,21 +4,23 @@
 <form action="" method="post">
 {{ task_form.title.label(class="form-label")}}{{ task_form.title(size=100, class="form-control w-50") }}
 {{ task_form.description.label(class="form-label") }}{{ task_form.description(class="form-control w-50") }}
-{{ task_form.completed.label(class="form-label") }}{{ task_form.completed }}
+{{ task_form.completed.label(class="form-label") }}{{ task_form.completed }}<br>
 {{ task_form.submit }}
 </form>
 <h2 class="text-secondary">Task List</h2>
-{% for task in tasks %}
 <div class="list-group">
     {% for task in tasks %}
     <form action="{{ url_for('toggle_task', task_id=task.id) }}" method="post" style="display: inline;">
-    <input type="checkbox"
-        {% if task.completed %} checked {% endif %}
-        onchange="this.form.submit()"
-        id="task-{{ task.id }}">
+        <input type="checkbox"
+            {% if task.completed %} checked {% endif %}
+            onchange="this.form.submit()"
+            id="task-{{ task.id }}"
+            title="Mark task as completed">
     </form>
-    <p class="list-group-item">{{ loop.index }}. {{ task.title }}</p>
-    <label for="task-{{ task.id }}">{{ task.title }}</label>
+    <label for="task-{{ task.id }}" class="list-group-item">
+        {{ loop.index }}. {{ task.title }}
+    </label>
+    <p>{{ task.description }}</p>
     {% endfor %}
 </div>
 {% endblock %}

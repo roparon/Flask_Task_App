@@ -25,7 +25,7 @@ def users():
         return redirect(url_for('tasks'))
     return render_template('register.html', title='Register', user_form=form)
 
-@app.route('/tasks')
+@app.route('/tasks', methods=['GET', 'POST'])
 def tasks():
     form = TaskForm()
     if form.validate_on_submit():
@@ -43,10 +43,10 @@ def tasks():
 
 
 
-@app.route('/toggle_task/<int:task_id>')
+@app.route('/toggle_task/<int:task_id>',methods=["POST"])
 def toggle_task(task_id):
     task = Task.query.get_or_404(task_id)
     task.completed = not task.completed
     db.session.commit()
-    flash(f'Task "{task.title}" status updated!', 'success')
+    flash(f'Task {task.title} status update','success')
     return redirect(url_for('tasks'))
