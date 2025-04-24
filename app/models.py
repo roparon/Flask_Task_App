@@ -21,11 +21,5 @@ class Task(db.Model):
     completed = db.Column(db.Boolean, default=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
 
-    def display_task(self):
-        status = "Completed" if self.completed else "Pending"
-        return (
-            f"Task ID: {self.task_id}, "
-            f"Title: {self.title}, "
-            f"Status: {status}, "
-            f"Description: {self.description}"
-        )
+    def __repr__(self):
+        return f"Task('{self.title}'"
