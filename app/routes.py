@@ -3,6 +3,7 @@ from app import app, db
 from app.models import User, Task
 from app.forms import TaskForm
 from app.forms import UserForm, UserForm, LoginForm
+from flask_login import login_user, login_required, logout_user, current_user
 
 @app.route('/')
 def home():
