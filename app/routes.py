@@ -57,6 +57,15 @@ def toggle_task(task_id):
     flash(f'{task.title} - status updated successfully!','success')
     return redirect(url_for('tasks'))
 
+
+@app.route('/delete_user/<int:user_id>', methods=["POST"])
+def delete_user(user_id):
+    user = User.query.get_or_404(user_id)
+    db.session.delete(user)
+    db.session.commit()
+    flash(f'User "{user.first_name}" has been deleted successfully!', 'success')
+    return redirect(url_for('user_list'))
+
 @app.route('/delete_task/<int:task_id>', methods=["POST"])
 def delete_task(task_id):
     task = Task.query.get_or_404(task_id)
