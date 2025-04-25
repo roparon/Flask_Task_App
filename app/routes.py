@@ -10,7 +10,6 @@ def home():
     return render_template('index.html', title='Home Page', users=users)
 
 @app.route('/users', methods=['GET','POST'])
-@login_required
 def users():
     form = UserForm()
     if form.validate_on_submit():
@@ -35,13 +34,13 @@ def tasks():
             title=form.title.data,
             description=form.description.data,
             completed=form.completed.data,
-            user_id=1
+            user_id=current_user.id
             )
         db.session.add(new_task)
         db.session.commit()
         flash(f'"{new_task.title}" added successfully!', 'success')
         return redirect(url_for('tasks'))
-    tasks = Task.query.all()
+    tasks = Task.query.filter_by(user_id=current_user.id).all()
     return render_template('tasks.html', title='Tasks', task_form=form, tasks=tasks)
 
 @app.route('/user_list', methods=['GET'])
@@ -97,7 +96,7 @@ def edith_task(task_id):
         form.title.data = task.title
         form.description.data = task.description
         form.completed.data = task.completed
-        tasks = Task.query.filter_by(user_id=current_user.id)
+        tasks = Task.query.filter_by(user_id=current_user.id).all()
     return render_template('tasks.html', title='Edith Tasks', task_form=form, tasks=tasks, edith_mode=True)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -107,7 +106,7 @@ def login():
     form = LoginForm()
     if request.method == 'POST':
         if form.validate_on_submit():
-            user = User.query.filter_by(username=form.username.data).first()
+            user = User.query.filter_by(user_name=form.username.data).first()
             if user and user.password == form.password.data:
                 flash(f'Welcome back, {user.first_name}!', 'success')
                 return redirect(url_for('home'))
