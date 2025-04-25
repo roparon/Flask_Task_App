@@ -71,16 +71,15 @@ def edith_task(task_id):
     task = Task.query.get_or_404(task_id)
     form = TaskForm()
     if request.method == 'POST':
-        if form.validate_on_submit():
-            task.title = form.title.data
-            task.description = form.description.data
-            task.completed = form.completed.data
-            db.session.commit()
-            flash(f'Task "{task.title}" has been updated successfully!', 'success')
-            return redirect(url_for('tasks'))
-        elif request.method == 'GET':
-            form.title.data = task.title
-            form.description.data = task.description
-            form.completed.data = task.completed
-            tasks = Task.query.all()
-        return render_template('tasks.html', title='Edith Tasks', task_form=form, tasks=tasks, edith_mode=True)
+        task.title = form.title.data
+        task.description = form.description.data
+        task.completed = form.completed.data
+        db.session.commit()
+        flash(f'Task "{task.title}" has been updated successfully!', 'success')
+        return redirect(url_for('tasks'))
+    elif request.method == 'GET':
+        form.title.data = task.title
+        form.description.data = task.description
+        form.completed.data = task.completed
+        tasks = Task.query.all()
+    return render_template('tasks.html', title='Edith Tasks', task_form=form, tasks=tasks, edith_mode=True)
