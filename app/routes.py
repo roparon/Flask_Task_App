@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, flash, request
 from app import app, db
 from app.models import User, Task
 from app.forms import TaskForm
-from app.forms import UserForm, UserForm
+from app.forms import UserForm, UserForm, LoginForm
 
 @app.route('/')
 def home():
@@ -91,3 +91,9 @@ def edith_task(task_id):
         form.completed.data = task.completed
         tasks = Task.query.all()
     return render_template('tasks.html', title='Edith Tasks', task_form=form, tasks=tasks, edith_mode=True)
+
+@app.route('login', methods = ['GET', 'POST'])
+def login():
+    form = LoginForm()
+
+    return render_template('login.html', title='login')
