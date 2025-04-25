@@ -72,3 +72,8 @@ def edith_task(task_id):
     form = TaskForm()
     if request.method == 'POST':
         task.title = form.title.data
+        task.description = form.description.data
+        task.completed = form.completed.data
+        db.session.commit()
+        flash(f'Task "{task.title}" has been updated successfully!', 'success')
+        return redirect(url_for('tasks'))
