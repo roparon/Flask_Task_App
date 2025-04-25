@@ -70,7 +70,7 @@ def delete_task(task_id):
 def edith_task(task_id):
     task = Task.query.get_or_404(task_id)
     form = TaskForm()
-    if request.method == 'POST':
+    if request.method == 'POST' and form.validate_on_submit():
         task.title = form.title.data
         task.description = form.description.data
         task.completed = form.completed.data
