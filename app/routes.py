@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from app import app, db
 from app.models import User, Task
 from app.forms import TaskForm
@@ -64,3 +64,11 @@ def delete_task(task_id):
     db.session.commit()
     flash(f'Task "{task.title}" has been deleted successfully!', 'success')
     return redirect(url_for('tasks'))
+
+
+@app.route('/edith_task/<int:task_id>', methods=["GET", "POST"])
+def edith_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    form = TaskForm()
+    if request.method == 'POST':
+        task.title = form.title.data
