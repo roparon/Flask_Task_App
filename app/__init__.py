@@ -15,9 +15,4 @@ login_manager.login_message_category = 'info'
 
 
 
-
-
-
-
-
 from app import routes

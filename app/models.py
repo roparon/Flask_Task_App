@@ -1,5 +1,8 @@
-from app import db
+from app import db, login_manager
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
 
 class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
