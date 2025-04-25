@@ -10,6 +10,7 @@ def home():
     return render_template('index.html', title='Home Page', users=users)
 
 @app.route('/users', methods=['GET','POST'])
+@login_required
 def users():
     form = UserForm()
     if form.validate_on_submit():
@@ -26,6 +27,7 @@ def users():
     return render_template('register.html', title='Register', user_form=form)
 
 @app.route('/tasks', methods=['GET', 'POST'])
+@login_required
 def tasks():
     form = TaskForm()
     if form.validate_on_submit():
@@ -43,6 +45,7 @@ def tasks():
     return render_template('tasks.html', title='Tasks', task_form=form, tasks=tasks)
 
 @app.route('/user_list', methods=['GET'])
+@login_required
 def user_list():
     users = User.query.all()
     return render_template('user_list.html', title='User List', users=users)
@@ -50,6 +53,7 @@ def user_list():
 
 
 @app.route('/toggle_task/<int:task_id>',methods=["POST"])
+@login_required
 def toggle_task(task_id):
     task = Task.query.get_or_404(task_id)
     task.completed = not task.completed
@@ -59,6 +63,7 @@ def toggle_task(task_id):
 
 
 @app.route('/delete_user/<int:user_id>', methods=["POST"])
+@login_required
 def delete_user(user_id):
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
@@ -67,6 +72,7 @@ def delete_user(user_id):
     return redirect(url_for('user_list'))
 
 @app.route('/delete_task/<int:task_id>', methods=["POST"])
+@login_required
 def delete_task(task_id):
     task = Task.query.get_or_404(task_id)
     db.session.delete(task)
@@ -76,6 +82,7 @@ def delete_task(task_id):
 
 
 @app.route('/edith_task/<int:task_id>', methods=["GET", "POST"])
+@login_required
 def edith_task(task_id):
     task = Task.query.get_or_404(task_id)
     form = TaskForm()
@@ -90,11 +97,13 @@ def edith_task(task_id):
         form.title.data = task.title
         form.description.data = task.description
         form.completed.data = task.completed
-        tasks = Task.query.all()
+        tasks = Task.query.filter_by(user_id=current_user.id)
     return render_template('tasks.html', title='Edith Tasks', task_form=form, tasks=tasks, edith_mode=True)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = LoginForm()
     if request.method == 'POST':
         if form.validate_on_submit():
