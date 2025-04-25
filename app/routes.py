@@ -93,18 +93,18 @@ def edith_task(task_id):
         tasks = Task.query.all()
     return render_template('tasks.html', title='Edith Tasks', task_form=form, tasks=tasks, edith_mode=True)
 
-@app.route('login', methods = ['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if request.method == 'POST':
         if form.validate_on_submit():
-            user = User.query.filter_by(username=form.username.data).firs()
+            user = User.query.filter_by(username=form.username.data).first()
             if user and user.password == form.password.data:
-                flash(f'Welcome Back{user.first_name}', 'success')
+                flash(f'Welcome back, {user.first_name}!', 'success')
                 return redirect(url_for('home'))
             else:
-                flash(f'Failed to log in try again')
-    return render_template('login.html', title='login')
+                flash('Failed to log in. Try again.', 'danger')
+    return render_template('login.html', title='Login', login_form=form)
 
 @app.route('/logout')
 def logout():
