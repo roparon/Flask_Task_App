@@ -77,3 +77,4 @@ def edith_task(task_id):
         db.session.commit()
         flash(f'Task "{task.title}" has been updated successfully!', 'success')
         return redirect(url_for('tasks'))
+    return render_template('tasks.html', title='Tasks', task_form=form, tasks=tasks)
