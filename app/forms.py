@@ -9,8 +9,8 @@ class TaskForm(FlaskForm):
    submit = SubmitField('Submit')
 
 class UserForm(FlaskForm):
-   user_name = StringField('User_Name', validators=[DataRequired()])
-   first_name = StringField('First_Name', validators=[DataRequired()])
-   last_name = StringField('Last_Name', validators=[DataRequired()])
+   user_name = StringField('User Name', validators=[DataRequired()])
+   first_name = StringField('First Name', validators=[DataRequired()])
+   last_name = StringField('Last Name', validators=[DataRequired()])
    password = PasswordField('Password', validators=[DataRequired()])
    submit = SubmitField('Register')
