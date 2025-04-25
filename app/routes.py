@@ -44,7 +44,6 @@ def tasks():
     return render_template('tasks.html', title='Tasks', task_form=form, tasks=tasks)
 
 @app.route('/user_list', methods=['GET'])
-@login_required
 def user_list():
     users = User.query.all()
     return render_template('user_list.html', title='User List', users=users)
@@ -52,7 +51,6 @@ def user_list():
 
 
 @app.route('/toggle_task/<int:task_id>',methods=["POST"])
-@login_required
 def toggle_task(task_id):
     task = Task.query.get_or_404(task_id)
     task.completed = not task.completed
@@ -62,7 +60,6 @@ def toggle_task(task_id):
 
 
 @app.route('/delete_user/<int:user_id>', methods=["POST"])
-@login_required
 def delete_user(user_id):
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
@@ -71,7 +68,6 @@ def delete_user(user_id):
     return redirect(url_for('user_list'))
 
 @app.route('/delete_task/<int:task_id>', methods=["POST"])
-@login_required
 def delete_task(task_id):
     task = Task.query.get_or_404(task_id)
     db.session.delete(task)
@@ -81,7 +77,6 @@ def delete_task(task_id):
 
 
 @app.route('/edith_task/<int:task_id>', methods=["GET", "POST"])
-@login_required
 def edith_task(task_id):
     task = Task.query.get_or_404(task_id)
     form = TaskForm()
