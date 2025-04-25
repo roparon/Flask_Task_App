@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="text-primary">{% if edith_mode %} Edith Tasks {% else %}Tasks {% endif %}</h1>
-<form action="" method="post">
+<h1 class="text-primary">{% if edith_mode %} Edith Tasks {% else %} Tasks {% endif %}</h1>
+<form action="{% if edith_mode %} {{ url_for('edith_task', task_id =) }}" method="post">
     {{ task_form.hidden_tag() }}
     {{ task_form.title.label(class="form-label") }}
     {{ task_form.title(class="form-control w-50") }}
