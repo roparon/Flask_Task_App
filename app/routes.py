@@ -105,7 +105,7 @@ def login():
             else:
                 flash('Failed to log in. Try again.', 'danger')
     return render_template('login.html', title='Login', login_form=form)
-
+    
 @app.route('/logout')
 def logout():
     logout_user
