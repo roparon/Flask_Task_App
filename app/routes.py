@@ -6,7 +6,6 @@ from app.forms import UserForm, UserForm
 
 @app.route('/')
 def home():
-    users = User.query.all()
     return render_template('index.html', title='Home Page', users=users)
 
 @app.route('/users', methods=['GET','POST'])
