@@ -96,5 +96,17 @@ def edith_task(task_id):
 @app.route('login', methods = ['GET', 'POST'])
 def login():
     form = LoginForm()
-
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user = User.query.filter_by(username=form.username.data).firs()
+            if user and user.password == form.password.data:
+                flash(f'Welcome Back{user.first_name}', 'success')
+                return redirect(url_for('home'))
+            else:
+                flash(f'Failed to log in try again')
     return render_template('login.html', title='login')
+
+@app.route('/logout')
+def logout():
+    logout_user
+    flash(f'logout successfully!')
