@@ -1,4 +1,5 @@
 from flask import render_template, redirect, url_for, flash, request
+import sqlalchemy
 from app import app, db
 from app.models import User, Task
 from app.forms import TaskForm
@@ -9,21 +10,26 @@ from flask_login import login_user, login_required, logout_user, current_user
 def home():
     return render_template('index.html', title='Home Page', users=users)
 
-@app.route('/users', methods=['GET','POST'])
+@app.route('/users', methods=['GET', 'POST'])
 def users():
     form = UserForm()
     if form.validate_on_submit():
-        new_user = User(
-            user_name=form.user_name.data,
-            first_name=form.first_name.data,
-            last_name=form.last_name.data,
-            password=form.password.data
-        )
-        db.session.add(new_user)
-        db.session.commit()
-        flash(f'{new_user.first_name} was registered successfully!', 'success')
-        return redirect(url_for('tasks'))
+        try:
+            new_user = User(
+                user_name=form.user_name.data,
+                first_name=form.first_name.data,
+                last_name=form.last_name.data,
+                password=form.password.data
+            )
+            db.session.add(new_user)
+            db.session.commit()
+            flash(f'{new_user.first_name} was registered successfully!', 'success')
+            return redirect(url_for('tasks'))
+        except sqlalchemy.exc.IntegrityError:
+            db.session.rollback()
+            flash('Username already exists. Please choose a different one.', 'danger')
     return render_template('register.html', title='Register', user_form=form)
+
 
 @app.route('/tasks', methods=['GET', 'POST'])
 def tasks():
