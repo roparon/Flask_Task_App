@@ -1,11 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="{{ url_for('login') }}" method="post">
-{{ login_form.hidden_tag() }}
-{{ login_form.username.label }} {{ login_form.username() }}
-{{ login_form.password.label }} {{ login_form.password() }}
-{{ login_form.submit() }}
-</form>
-
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center text-primary mb-4">Login</h2>
+            <form action="{{ url_for('login') }}" method="post" class="shadow p-4 rounded bg-light">
+                {{ login_form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ login_form.username.label(class="form-label") }}
+                    {{ login_form.username(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ login_form.password.label(class="form-label") }}
+                    {{ login_form.password(class="form-control") }}
+                </div>
+                <div class="d-grid">
+                    {{ login_form.submit(class="btn btn-primary btn-block") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

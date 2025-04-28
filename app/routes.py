@@ -26,7 +26,6 @@ def users():
     return render_template('register.html', title='Register', user_form=form)
 
 @app.route('/tasks', methods=['GET', 'POST'])
-@login_required
 def tasks():
     form = TaskForm()
     if current_user.is_authenticated:
