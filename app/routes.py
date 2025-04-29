@@ -31,25 +31,32 @@ def users():
     return render_template('register.html', title='Register', user_form=form)
 
 
+from flask import redirect, url_for, flash
+from flask_login import current_user, login_required
+
 @app.route('/tasks', methods=['GET', 'POST'])
 def tasks():
     form = TaskForm()
-    if current_user.is_authenticated:
-        if form.validate_on_submit():
-            new_task = Task(
-                title=form.title.data,
-                description=form.description.data,
-                completed=form.completed.data,
-                user_id=current_user.id
-                )
-            db.session.add(new_task)
-            db.session.commit()
-            flash(f'"{new_task.title}" added successfully!', 'success')
-            return redirect(url_for('tasks'))
-        tasks = Task.query.filter_by(user_id=current_user.id).all()
-    else:
-        tasks = Task.query.filter_by(user_id=current_user.id).all()
+
+    if not current_user.is_authenticated:
+        flash("You must be logged in to view or add tasks.", "warning")
+        return redirect(url_for('login'))  # or render a template with a message
+
+    if form.validate_on_submit():
+        new_task = Task(
+            title=form.title.data,
+            description=form.description.data,
+            completed=form.completed.data,
+            user_id=current_user.id
+        )
+        db.session.add(new_task)
+        db.session.commit()
+        flash(f'"{new_task.title}" added successfully!', 'success')
+        return redirect(url_for('tasks'))
+
+    tasks = Task.query.filter_by(user_id=current_user.id).all()
     return render_template('tasks.html', title='Tasks', task_form=form, tasks=tasks)
+
 
 @app.route('/user_list', methods=['GET'])
 def user_list():
