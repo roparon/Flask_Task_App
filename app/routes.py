@@ -46,10 +46,11 @@ def tasks():
             db.session.commit()
             flash(f'"{new_task.title}" added successfully!', 'success')
             return redirect(url_for('tasks'))
+    if current_user.is_authenticated:
         tasks = Task.query.filter_by(user_id=current_user.id).all()
     else:
-        tasks = Task.query.filter_by(user_id=current_user.id).all()
-    return render_template('tasks.html', title='Tasks', task_form=form, tasks=tasks)
+        flash("Please log in to view your tasks.", "warning")
+        return redirect(url_for('login'))
 
 @app.route('/user_list', methods=['GET'])
 def user_list():
