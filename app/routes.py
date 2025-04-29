@@ -100,16 +100,16 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(user_name=form.username.data).first()
-        if user and user.password == form.password.data:
-            login_user(user)  # <-- You missed this!
-            flash(f'Welcome back, {user.first_name}!', 'success')
-            return redirect(url_for('home'))
-        else:
-            flash('Failed to log in. Try again.', 'danger')
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            user = User.query.filter_by(user_name=form.username.data).first()
+            if user and user.password == form.password.data:
+                login_user(user)
+                flash(f'Welcome back, {user.first_name}!', 'success')
+                return redirect(url_for('home'))
+            else:
+                flash('Failed to log in. Try again.', 'danger')
     return render_template('login.html', title='Login', login_form=form)
-
     
 @app.route('/logout')
 def logout():
