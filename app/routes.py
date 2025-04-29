@@ -48,7 +48,7 @@ def tasks():
             return redirect(url_for('tasks'))
         tasks = Task.query.filter_by(user_id=current_user.id).all()
     else:
-        tasks = []
+        tasks = Task.query.filter_by(user_id=current_user.id).all()
     return render_template('tasks.html', title='Tasks', task_form=form, tasks=tasks)
 
 @app.route('/user_list', methods=['GET'])
