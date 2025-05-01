@@ -75,7 +75,7 @@ def delete_task(task_id):
     db.session.commit()
     flash(f'Task "{task.title}" has been deleted successfully!', 'success')
     return redirect(url_for('tasks'))
-
+#route for edithing taskss
 
 @app.route('/edith_task/<int:task_id>', methods=["GET", "POST"])
 def edith_task(task_id):
@@ -94,7 +94,7 @@ def edith_task(task_id):
         form.completed.data = task.completed
         tasks = Task.query.filter_by(user_id=current_user.id).all()
     return render_template('tasks.html', title='Edith Tasks', task_form=form, tasks=tasks, edith_mode=True)
-
+#rroute for logging in
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
