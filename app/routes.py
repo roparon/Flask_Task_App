@@ -67,7 +67,7 @@ def toggle_task(task_id):
     flash(f'{task.title} - status updated successfully!','success')
     return redirect(url_for('tasks'))
 
-
+#this route is for deleting tasks
 @app.route('/delete_task/<int:task_id>', methods=["POST"])
 def delete_task(task_id):
     task = Task.query.get_or_404(task_id)
