@@ -67,7 +67,6 @@ def toggle_task(task_id):
     flash(f'{task.title} - status updated successfully!','success')
     return redirect(url_for('tasks'))
 
-#this route is for deleting tasks
 @app.route('/delete_task/<int:task_id>', methods=["POST"])
 def delete_task(task_id):
     task = Task.query.get_or_404(task_id)
@@ -75,7 +74,6 @@ def delete_task(task_id):
     db.session.commit()
     flash(f'Task "{task.title}" has been deleted successfully!', 'success')
     return redirect(url_for('tasks'))
-#route for edithing taskss
 
 @app.route('/edith_task/<int:task_id>', methods=["GET", "POST"])
 def edith_task(task_id):
@@ -94,7 +92,7 @@ def edith_task(task_id):
         form.completed.data = task.completed
         tasks = Task.query.filter_by(user_id=current_user.id).all()
     return render_template('tasks.html', title='Edith Tasks', task_form=form, tasks=tasks, edith_mode=True)
-#rroute for logging in
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -110,7 +108,6 @@ def login():
                 flash('Failed to log in. Try again.', 'danger')
     return render_template('login.html', title='Login', login_form=form)
     
-    #this route is for logging out
 @app.route('/logout')
 def logout():
     logout_user()
