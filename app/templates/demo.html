@@ -31,41 +31,35 @@
       padding: 30px 0;
     }
 
-    /* Custom small offcanvas size (~2cm ≈ 75px) */
-    .offcanvas-small {
-      width: 75px !important;
+    /* Auto-sizing offcanvas */
+    .offcanvas-auto {
+      width: auto !important;
+      max-width: max-content;
     }
 
-    .offcanvas-small .nav-link {
-      font-size: 0.75rem;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
+    .offcanvas-body {
+      padding: 1rem;
+    }
+
+    .offcanvas-auto .nav-link {
       white-space: nowrap;
-    }
-
-    .offcanvas-small .offcanvas-header {
-      padding: 0.5rem 0.5rem;
-    }
-
-    .offcanvas-small .offcanvas-title {
-      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar with Offcanvas -->
+  <!-- Navbar with Auto-Sizing Offcanvas -->
   <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">MySite</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="offcanvas offcanvas-end offcanvas-small text-bg-dark" tabindex="-1" id="offcanvasMenu">
+      <div class="offcanvas offcanvas-end offcanvas-auto text-bg-dark" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav">
