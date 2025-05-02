@@ -9,37 +9,60 @@
     body {
       padding-top: 56px;
     }
+
     .hero {
       background: linear-gradient(90deg, #0d6efd 0%, #6610f2 100%);
       color: white;
       padding: 100px 0;
     }
+
     .hero h1 {
       font-size: 3rem;
       font-weight: bold;
     }
+
     .card img {
       object-fit: cover;
       height: 200px;
     }
+
     footer {
       background-color: #f8f9fa;
       padding: 30px 0;
+    }
+
+    /* Custom small offcanvas size (~2cm ≈ 75px) */
+    .offcanvas-small {
+      width: 75px !important;
+    }
+
+    .offcanvas-small .nav-link {
+      font-size: 0.75rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      white-space: nowrap;
+    }
+
+    .offcanvas-small .offcanvas-header {
+      padding: 0.5rem 0.5rem;
+    }
+
+    .offcanvas-small .offcanvas-title {
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-<!-- Navbar with Offcanvas -->
-<nav class="navbar navbar-dark bg-dark fixed-top">
+  <!-- Navbar with Offcanvas -->
+  <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">MySite</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
-  
-      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasMenu">
+
+      <div class="offcanvas offcanvas-end offcanvas-small text-bg-dark" tabindex="-1" id="offcanvasMenu">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
@@ -55,7 +78,7 @@
       </div>
     </div>
   </nav>
-  
+
   <!-- Hero Section -->
   <section class="hero text-center">
     <div class="container">
