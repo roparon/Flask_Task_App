@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>⚡ WELCOME TO THE GLITCHVERSE ⚡</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff0080, #7928ca);
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
+      overflow: hidden;
+      animation: bgShift 5s infinite alternate;
+    }
+
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .glitch {
+      font-size: 3rem;
+      font-weight: bold;
+      position: relative;
+      animation: flicker 1.5s infinite;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      color: white;
+    }
+
+    .glitch::before {
+      top: -2px;
+      text-shadow: -2px 0 red;
+      animation: glitchTop 0.7s infinite;
+    }
+
+    .glitch::after {
+      top: 2px;
+      text-shadow: -2px 0 blue;
+      animation: glitchBottom 0.7s infinite;
+    }
+
+    @keyframes glitchTop {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      50% { clip: rect(0, 9999px, 20px, 0); left: 5px; }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+
+    @keyframes glitchBottom {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      50% { clip: rect(10px, 9999px, 30px, 0); left: -5px; }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .crazy-btn {
+      background-color: #ff0000;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      padding: 1em 2em;
+      animation: pulse 1.2s infinite;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .container {
+      margin-top: 10vh;
+      text-align: center;
+    }
+
+    .rotating-emoji {
+      font-size: 4rem;
+      display: inline-block;
+      animation: spin 3s linear infinite;
+      margin-top: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="glitch" data-text="⚡ WELCOME TO THE GLITCHVERSE ⚡">⚡ WELCOME TO THE GLITCHVERSE ⚡</div>
+    <p class="mt-4 lead">Nothing here makes sense... and that's the point.</p>
+    <button class="crazy-btn mt-3">DO NOT PRESS</button>
+    <div class="rotating-emoji mt-5">🌀</div>
+  </div>
+</body>
+</html>
