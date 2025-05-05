@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login & Flashy Welcome</title>
+  <title>Birthday Celebration Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     * {
@@ -131,13 +131,47 @@
         opacity: 0;
       }
     }
+
+    .gift-box {
+      position: absolute;
+      font-size: 2rem;
+      color: #ff1493;
+      animation: giftFall 5s linear infinite;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @keyframes giftFall {
+      0% {
+        top: -10vh;
+        transform: rotate(0deg);
+      }
+      100% {
+        top: 100vh;
+        transform: rotate(720deg);
+      }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: #ff69b4;
+      border-radius: 50%;
+      animation: confettiFall 3s infinite;
+    }
+
+    @keyframes confettiFall {
+      0% { opacity: 1; transform: translateY(-10vh); }
+      100% { opacity: 0; transform: translateY(100vh); }
+    }
   </style>
 </head>
 <body>
 
   <!-- Login Section -->
   <div class="card" id="login-card">
-    <h1>🌟 Login to the Party</h1>
+    <h1>🎂 Login to Celebrate</h1>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
     <button onclick="login()">Login</button>
@@ -147,7 +181,7 @@
   <!-- Welcome Section -->
   <div id="welcome">
     <h1 class="celebrate" id="greeting">🎉 Welcome!</h1>
-    <p>Let’s celebrate with flowers 🌸🌼🌺</p>
+    <p>Enjoy your birthday party with flowers and gifts 🎁</p>
     <button class="logout-btn" onclick="logout()">Logout</button>
   </div>
 
@@ -157,7 +191,7 @@
       const password = document.getElementById('password').value;
       const errorEl = document.getElementById('error-message');
 
-      if (username === 'user' && password === 'flower123') {
+      if (username === 'user' && password === 'birthday123') {
         showWelcome(username);
       } else {
         errorEl.textContent = "Incorrect username or password.";
@@ -169,10 +203,11 @@
       const welcome = document.getElementById('welcome');
       welcome.style.display = 'flex';
       document.getElementById('greeting').textContent = `🎉 Welcome, ${name}!`;
+
       document.body.classList.add('flashy');
 
-      // Floating emoji effect
-      for (let i = 0; i < 50; i++) {
+      // Falling flowers and gifts
+      for (let i = 0; i < 30; i++) {
         const emoji = document.createElement('div');
         emoji.className = 'emoji';
         emoji.textContent = ['🌸', '🌼', '💐', '🌺', '🌻'][Math.floor(Math.random() * 5)];
@@ -183,6 +218,29 @@
         document.body.appendChild(emoji);
 
         setTimeout(() => emoji.remove(), 7000);
+      }
+
+      // Falling gift boxes
+      for (let i = 0; i < 5; i++) {
+        const gift = document.createElement('div');
+        gift.className = 'gift-box';
+        gift.textContent = '🎁';
+        gift.style.left = Math.random() * 100 + 'vw';
+        gift.style.animationDelay = Math.random() * 3 + 's';
+        document.body.appendChild(gift);
+
+        setTimeout(() => gift.remove(), 5000);
+      }
+
+      // Confetti effects
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDelay = Math.random() * 3 + 's';
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 3000);
       }
     }
 
