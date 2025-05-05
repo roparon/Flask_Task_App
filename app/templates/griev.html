@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login & Welcome Garden</title>
+  <title>Login & Flashy Welcome</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     * {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #fceabb, #f8b500);
+      background: linear-gradient(135deg, #fceabb, #f8b500);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -19,6 +20,15 @@
       height: 100vh;
       overflow: hidden;
       transition: background 1s;
+    }
+
+    body.flashy {
+      animation: flashBg 2s infinite alternate;
+    }
+
+    @keyframes flashBg {
+      0% { background: linear-gradient(135deg, #fceabb, #f8b500); }
+      100% { background: linear-gradient(135deg, #ffb6c1, #ff69b4); }
     }
 
     .card {
@@ -80,12 +90,28 @@
     .celebrate {
       font-size: 2rem;
       margin-bottom: 0.5em;
+      border: 4px dashed white;
+      padding: 0.5em 1em;
+      border-radius: 10px;
+      animation: borderFlash 1s infinite;
+    }
+
+    @keyframes borderFlash {
+      0% { border-color: #fff; }
+      50% { border-color: #ff69b4; }
+      100% { border-color: #fff; }
     }
 
     .logout-btn {
       background: #333;
       color: white;
       margin-top: 2em;
+      animation: glow 1s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px #ff69b4; }
+      100% { box-shadow: 0 0 20px #ff1493; }
     }
 
     .emoji {
@@ -108,9 +134,10 @@
   </style>
 </head>
 <body>
+
   <!-- Login Section -->
   <div class="card" id="login-card">
-    <h1>🌼 Welcome Back</h1>
+    <h1>🌟 Login to the Party</h1>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
     <button onclick="login()">Login</button>
@@ -120,7 +147,7 @@
   <!-- Welcome Section -->
   <div id="welcome">
     <h1 class="celebrate" id="greeting">🎉 Welcome!</h1>
-    <p>Enjoy your day in the flower garden 🌸🌼🌺</p>
+    <p>Let’s celebrate with flowers 🌸🌼🌺</p>
     <button class="logout-btn" onclick="logout()">Logout</button>
   </div>
 
@@ -130,7 +157,6 @@
       const password = document.getElementById('password').value;
       const errorEl = document.getElementById('error-message');
 
-      // Simple credentials (for demonstration)
       if (username === 'user' && password === 'flower123') {
         showWelcome(username);
       } else {
@@ -143,9 +169,10 @@
       const welcome = document.getElementById('welcome');
       welcome.style.display = 'flex';
       document.getElementById('greeting').textContent = `🎉 Welcome, ${name}!`;
+      document.body.classList.add('flashy');
 
-      // Start flower rain
-      for (let i = 0; i < 40; i++) {
+      // Floating emoji effect
+      for (let i = 0; i < 50; i++) {
         const emoji = document.createElement('div');
         emoji.className = 'emoji';
         emoji.textContent = ['🌸', '🌼', '💐', '🌺', '🌻'][Math.floor(Math.random() * 5)];
