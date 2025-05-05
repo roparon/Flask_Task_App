@@ -12,6 +12,7 @@
       font-family: sans-serif;
       text-align: center;
       padding: 20vh 2em;
+      overflow: hidden;
     }
 
     h1 {
@@ -42,12 +43,34 @@
     button:hover {
       background: #ff6699;
     }
+
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: fall 3s ease-out forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <h1>⚡ Welcome to the Glitchverse ⚡</h1>
   <p id="message"></p>
   <button onclick="explode()">Do Not Press</button>
+
+  <!-- Optional sound effect -->
+  <audio id="boom-sound">
+    <source src="https://www.soundjay.com/button/sounds/button-10.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     // Typewriter effect
@@ -64,9 +87,25 @@
     }
     typeWriter();
 
-    // Button click behavior
+    // Explosion effect with emojis
     function explode() {
-      alert("💥 You were warned!");
+      const sound = document.getElementById("boom-sound");
+      sound.play();
+
+      const emojis = ["💥", "🤯", "🔥", "🚀", "🎉"];
+      for (let i = 0; i < 30; i++) {
+        const emoji = document.createElement("div");
+        emoji.className = "emoji";
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = `${Math.random() * 100}%`;
+        emoji.style.top = `-30px`;
+        document.body.appendChild(emoji);
+
+        // Remove after animation
+        setTimeout(() => {
+          emoji.remove();
+        }, 3000);
+      }
     }
   </script>
 </body>
