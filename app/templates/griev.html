@@ -2,120 +2,165 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login Celebration</title>
+  <title>Login & Welcome Garden</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      font-family: sans-serif;
-      background: linear-gradient(to right, #ffe0f0, #e0f7ff);
-      text-align: center;
-      padding-top: 15vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       overflow: hidden;
+      transition: background 1s;
     }
 
-    #login-section, #welcome-section {
-      display: none;
-    }
-
-    #login-section.active, #welcome-section.active {
-      display: block;
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 300px;
+      width: 90%;
     }
 
     h1 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
+      margin-top: 0;
+      font-size: 1.8rem;
+      color: #444;
     }
 
     input {
       padding: 0.6em;
-      font-size: 1rem;
-      margin: 0.5em;
+      width: 100%;
+      margin: 0.5em 0;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
+      font-size: 1rem;
     }
 
     button {
-      padding: 0.6em 1.2em;
-      font-size: 1rem;
-      background: #ff66a5;
-      color: white;
+      margin-top: 1em;
+      width: 100%;
+      padding: 0.7em;
+      background: #ff7eb9;
       border: none;
-      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 6px;
       cursor: pointer;
+      transition: background 0.3s;
     }
 
     button:hover {
-      background: #ff85b3;
+      background: #ff57a1;
     }
 
-    .flower {
+    #error-message {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: 0.5em;
+    }
+
+    #welcome {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .celebrate {
+      font-size: 2rem;
+      margin-bottom: 0.5em;
+    }
+
+    .logout-btn {
+      background: #333;
+      color: white;
+      margin-top: 2em;
+    }
+
+    .emoji {
       position: absolute;
       font-size: 2rem;
-      animation: fall 5s linear infinite;
+      pointer-events: none;
+      animation: floatDown 6s linear forwards;
     }
 
-    @keyframes fall {
-      0% { transform: translateY(-10%); opacity: 1; }
-      100% { transform: translateY(110vh); opacity: 0; }
-    }
-
-    .confetti {
-      font-size: 3rem;
-      animation: pop 0.5s ease-out;
-    }
-
-    @keyframes pop {
-      0% { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes floatDown {
+      0% {
+        transform: translateY(-10vh);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-
   <!-- Login Section -->
-  <div id="login-section" class="active">
-    <h1>Login to Your Garden</h1>
-    <input type="text" id="username" placeholder="Username"><br>
-    <input type="password" id="password" placeholder="Password"><br>
-    <button onclick="handleLogin()">Login</button>
-    <p id="error-message" style="color: red;"></p>
+  <div class="card" id="login-card">
+    <h1>🌼 Welcome Back</h1>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="error-message"></p>
   </div>
 
   <!-- Welcome Section -->
-  <div id="welcome-section">
-    <h1 class="confetti">🎉 Welcome, friend! 🌸</h1>
-    <p>Enjoy the flowers and your day!</p>
+  <div id="welcome">
+    <h1 class="celebrate" id="greeting">🎉 Welcome!</h1>
+    <p>Enjoy your day in the flower garden 🌸🌼🌺</p>
+    <button class="logout-btn" onclick="logout()">Logout</button>
   </div>
 
   <script>
-    function handleLogin() {
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value;
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const errorEl = document.getElementById('error-message');
 
-      // Simple fixed check (in real apps, never do this on the client side)
-      if (username === "user" && password === "flower123") {
-        document.getElementById("login-section").classList.remove("active");
-        document.getElementById("welcome-section").classList.add("active");
-        startCelebration();
+      // Simple credentials (for demonstration)
+      if (username === 'user' && password === 'flower123') {
+        showWelcome(username);
       } else {
-        document.getElementById("error-message").textContent = "Incorrect username or password!";
+        errorEl.textContent = "Incorrect username or password.";
       }
     }
 
-    function startCelebration() {
-      const flowers = ["🌸", "🌼", "💐", "🌻", "🌺"];
-      for (let i = 0; i < 30; i++) {
-        const flower = document.createElement("div");
-        flower.className = "flower";
-        flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-        flower.style.left = Math.random() * 100 + "vw";
-        flower.style.animationDuration = 3 + Math.random() * 3 + "s";
-        document.body.appendChild(flower);
+    function showWelcome(name) {
+      document.getElementById('login-card').style.display = 'none';
+      const welcome = document.getElementById('welcome');
+      welcome.style.display = 'flex';
+      document.getElementById('greeting').textContent = `🎉 Welcome, ${name}!`;
 
-        // Remove after fall
-        setTimeout(() => flower.remove(), 6000);
+      // Start flower rain
+      for (let i = 0; i < 40; i++) {
+        const emoji = document.createElement('div');
+        emoji.className = 'emoji';
+        emoji.textContent = ['🌸', '🌼', '💐', '🌺', '🌻'][Math.floor(Math.random() * 5)];
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.top = '-50px';
+        emoji.style.animationDelay = Math.random() * 5 + 's';
+        emoji.style.fontSize = (Math.random() * 1.5 + 1.5) + 'rem';
+        document.body.appendChild(emoji);
+
+        setTimeout(() => emoji.remove(), 7000);
       }
+    }
+
+    function logout() {
+      location.reload();
     }
   </script>
 </body>
