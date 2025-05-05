@@ -185,15 +185,45 @@
     <button class="logout-btn" onclick="logout()">Logout</button>
   </div>
 
+  <!-- Sound Effects -->
+  <audio id="bg-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+  </audio>
+  <audio id="login-sound">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3" type="audio/mp3">
+  </audio>
+  <audio id="confetti-sound">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mp3">
+  </audio>
+  <audio id="error-sound">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" type="audio/mp3">
+  </audio>
+
   <script>
+    let bgMusicPlayed = false;
+    const bgMusic = document.getElementById('bg-music');
+    const loginSound = document.getElementById('login-sound');
+    const confettiSound = document.getElementById('confetti-sound');
+    const errorSound = document.getElementById('error-sound');
+
+    // Play background music on page load
+    window.onload = function() {
+      bgMusic.play();
+      bgMusic.volume = 0.2; // Low background music volume
+    };
+
     function login() {
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value;
       const errorEl = document.getElementById('error-message');
 
       if (username === 'user' && password === 'birthday123') {
+        loginSound.play();
+        loginSound.volume = 0.2; // Adjust sound volume
         showWelcome(username);
       } else {
+        errorSound.play();
+        errorSound.volume = 0.2; // Adjust sound volume
         errorEl.textContent = "Incorrect username or password.";
       }
     }
@@ -242,6 +272,9 @@
 
         setTimeout(() => confetti.remove(), 3000);
       }
+
+      confettiSound.play();
+      confettiSound.volume = 0.2; // Adjust sound volume
     }
 
     function logout() {
