@@ -2,109 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome to Glitchverse</title>
+  <title>Login Celebration</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       margin: 0;
-      background: linear-gradient(to right, #ff00cc, #3333ff);
-      color: white;
       font-family: sans-serif;
+      background: linear-gradient(to right, #ffe0f0, #e0f7ff);
       text-align: center;
-      padding: 20vh 2em;
+      padding-top: 15vh;
       overflow: hidden;
+    }
+
+    #login-section, #welcome-section {
+      display: none;
+    }
+
+    #login-section.active, #welcome-section.active {
+      display: block;
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
     }
 
-    #message {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid white;
-      width: 0;
+    input {
+      padding: 0.6em;
+      font-size: 1rem;
+      margin: 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
     button {
-      margin-top: 2rem;
-      padding: 0.75em 1.5em;
+      padding: 0.6em 1.2em;
       font-size: 1rem;
-      background: #ff3366;
-      border: none;
+      background: #ff66a5;
       color: white;
-      border-radius: 8px;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.3s ease;
     }
 
     button:hover {
-      background: #ff6699;
+      background: #ff85b3;
     }
 
-    .emoji {
+    .flower {
       position: absolute;
       font-size: 2rem;
-      animation: fall 3s ease-out forwards;
+      animation: fall 5s linear infinite;
     }
 
     @keyframes fall {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(-10%); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    .confetti {
+      font-size: 3rem;
+      animation: pop 0.5s ease-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <h1>⚡ Welcome to the Glitchverse ⚡</h1>
-  <p id="message"></p>
-  <button onclick="explode()">Do Not Press</button>
 
-  <!-- Optional sound effect -->
-  <audio id="boom-sound">
-    <source src="https://www.soundjay.com/button/sounds/button-10.mp3" type="audio/mpeg">
-  </audio>
+  <!-- Login Section -->
+  <div id="login-section" class="active">
+    <h1>Login to Your Garden</h1>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="handleLogin()">Login</button>
+    <p id="error-message" style="color: red;"></p>
+  </div>
+
+  <!-- Welcome Section -->
+  <div id="welcome-section">
+    <h1 class="confetti">🎉 Welcome, friend! 🌸</h1>
+    <p>Enjoy the flowers and your day!</p>
+  </div>
 
   <script>
-    // Typewriter effect
-    const text = "Loading... Please remain calm.";
-    const messageEl = document.getElementById("message");
-    let i = 0;
+    function handleLogin() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
 
-    function typeWriter() {
-      if (i < text.length) {
-        messageEl.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
+      // Simple fixed check (in real apps, never do this on the client side)
+      if (username === "user" && password === "flower123") {
+        document.getElementById("login-section").classList.remove("active");
+        document.getElementById("welcome-section").classList.add("active");
+        startCelebration();
+      } else {
+        document.getElementById("error-message").textContent = "Incorrect username or password!";
       }
     }
-    typeWriter();
 
-    // Explosion effect with emojis
-    function explode() {
-      const sound = document.getElementById("boom-sound");
-      sound.play();
-
-      const emojis = ["💥", "🤯", "🔥", "🚀", "🎉"];
+    function startCelebration() {
+      const flowers = ["🌸", "🌼", "💐", "🌻", "🌺"];
       for (let i = 0; i < 30; i++) {
-        const emoji = document.createElement("div");
-        emoji.className = "emoji";
-        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        emoji.style.left = `${Math.random() * 100}%`;
-        emoji.style.top = `-30px`;
-        document.body.appendChild(emoji);
+        const flower = document.createElement("div");
+        flower.className = "flower";
+        flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+        flower.style.left = Math.random() * 100 + "vw";
+        flower.style.animationDuration = 3 + Math.random() * 3 + "s";
+        document.body.appendChild(flower);
 
-        // Remove after animation
-        setTimeout(() => {
-          emoji.remove();
-        }, 3000);
+        // Remove after fall
+        setTimeout(() => flower.remove(), 6000);
       }
     }
   </script>
