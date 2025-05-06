@@ -2,89 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Simple Space Login</title>
+  <title>Fortune Cookie</title>
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000022;
-      color: white;
+      background: #fff8dc;
+      font-family: 'Georgia', serif;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       flex-direction: column;
-    }
-
-    .login-box {
-      background: #111144;
-      padding: 2rem;
-      border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
       text-align: center;
-      box-shadow: 0 0 10px #0ff;
     }
 
-    input {
-      display: block;
-      width: 100%;
-      padding: 0.5rem;
-      margin: 0.5rem 0;
-      border: none;
-      border-radius: 5px;
+    h1 {
+      font-size: 2rem;
+      color: #b5651d;
     }
 
-    button {
-      padding: 0.5rem 1rem;
-      background-color: #0ff;
-      color: #000;
-      border: none;
-      border-radius: 5px;
+    .cookie {
+      font-size: 5rem;
       cursor: pointer;
+      margin: 2rem 0;
+      transition: transform 0.3s;
     }
 
-    #welcome {
+    .cookie:hover {
+      transform: scale(1.1);
+    }
+
+    #fortune {
+      font-size: 1.2rem;
+      max-width: 300px;
+      padding: 1rem;
+      background: #fff;
+      border: 2px dashed #b5651d;
+      border-radius: 10px;
+      color: #444;
       display: none;
-      text-align: center;
+      animation: fadeIn 1s ease;
     }
 
-    #error {
-      color: red;
-      margin-top: 0.5rem;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="login-box" id="login-box">
-    <h2>🚀 Space Login</h2>
-    <input type="text" id="user" placeholder="Callsign">
-    <input type="password" id="pass" placeholder="Access Code">
-    <button onclick="login()">Launch</button>
-    <div id="error"></div>
-  </div>
 
-  <div id="welcome">
-    <h2>Welcome aboard, Commander!</h2>
-    <p>You've successfully logged in.</p>
-    <button onclick="logout()">Log Out</button>
-  </div>
+  <h1>🥠 Tap the Cookie for Your Fortune</h1>
+  <div class="cookie" onclick="getFortune()">🥠</div>
+  <div id="fortune"></div>
+
+  <audio id="crack-sound">
+    <source src="https://www.soundjay.com/button/sounds/button-29.mp3" type="audio/mp3">
+  </audio>
 
   <script>
-    function login() {
-      const user = document.getElementById('user').value;
-      const pass = document.getElementById('pass').value;
-      const error = document.getElementById('error');
+    const fortunes = [
+      "You will have a great surprise soon!",
+      "Patience is a virtue, especially today.",
+      "A new adventure awaits you this week.",
+      "Something you lost will turn up soon.",
+      "Someone admires you more than you know.",
+      "An opportunity will present itself. Take it!",
+      "You are exactly where you need to be."
+    ];
 
-      if (user === 'commander' && pass === 'galaxy42') {
-        document.getElementById('login-box').style.display = 'none';
-        document.getElementById('welcome').style.display = 'block';
-      } else {
-        error.textContent = 'Invalid callsign or access code.';
-      }
-    }
-
-    function logout() {
-      location.reload();
+    function getFortune() {
+      const random = fortunes[Math.floor(Math.random() * fortunes.length)];
+      document.getElementById('fortune').textContent = random;
+      document.getElementById('fortune').style.display = 'block';
+      document.getElementById('crack-sound').play();
     }
   </script>
+
 </body>
 </html>
