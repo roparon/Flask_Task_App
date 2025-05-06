@@ -2,80 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Fortune Cookie</title>
+  <title>Fortune Insight</title>
   <style>
     body {
-      background: #fff8dc;
-      font-family: 'Georgia', serif;
+      margin: 0;
+      background: #f4f6f8;
+      font-family: 'Helvetica Neue', sans-serif;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      margin: 0;
+      color: #333;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       text-align: center;
+      width: 100%;
+      max-width: 400px;
     }
 
     h1 {
-      font-size: 2rem;
-      color: #b5651d;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #1a202c;
     }
 
-    .cookie {
-      font-size: 5rem;
+    .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #007BFF;
+      color: white;
       cursor: pointer;
-      margin: 2rem 0;
-      transition: transform 0.3s;
+      transition: background-color 0.3s;
     }
 
-    .cookie:hover {
-      transform: scale(1.1);
+    .btn:hover {
+      background-color: #0056b3;
     }
 
-    #fortune {
-      font-size: 1.2rem;
-      max-width: 300px;
+    .fortune {
+      margin-top: 2rem;
+      font-style: italic;
+      font-size: 1.1rem;
       padding: 1rem;
-      background: #fff;
-      border: 2px dashed #b5651d;
-      border-radius: 10px;
-      color: #444;
+      border-left: 4px solid #007BFF;
+      background: #f1f9ff;
+      border-radius: 6px;
       display: none;
-      animation: fadeIn 1s ease;
+      animation: fadeIn 0.5s ease-in;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
-  <h1>🥠 Tap the Cookie for Your Fortune</h1>
-  <div class="cookie" onclick="getFortune()">🥠</div>
-  <div id="fortune"></div>
+  <div class="container">
+    <h1>Discover Your Insight</h1>
+    <button class="btn" onclick="revealFortune()">Reveal Fortune</button>
+    <div class="fortune" id="fortune-box"></div>
+    <footer>&copy; 2025 Insight Generator</footer>
+  </div>
 
-  <audio id="crack-sound">
-    <source src="https://www.soundjay.com/button/sounds/button-29.mp3" type="audio/mp3">
+  <audio id="ping">
+    <source src="https://www.soundjay.com/buttons/sounds/button-16.mp3" type="audio/mp3">
   </audio>
 
   <script>
     const fortunes = [
-      "You will have a great surprise soon!",
-      "Patience is a virtue, especially today.",
-      "A new adventure awaits you this week.",
-      "Something you lost will turn up soon.",
-      "Someone admires you more than you know.",
-      "An opportunity will present itself. Take it!",
-      "You are exactly where you need to be."
+      "Leadership is not a position, it’s a mindset.",
+      "Small steps today lead to big results tomorrow.",
+      "You’re closer to success than you think.",
+      "Change is a signal for growth.",
+      "Consistency outperforms intensity.",
+      "Great ideas often come from quiet moments.",
+      "Your focus determines your reality."
     ];
 
-    function getFortune() {
+    function revealFortune() {
+      const box = document.getElementById('fortune-box');
+      const sound = document.getElementById('ping');
       const random = fortunes[Math.floor(Math.random() * fortunes.length)];
-      document.getElementById('fortune').textContent = random;
-      document.getElementById('fortune').style.display = 'block';
-      document.getElementById('crack-sound').play();
+      box.textContent = random;
+      box.style.display = 'block';
+      sound.play();
     }
   </script>
 
