@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adorable Split Image Pop</title>
+  <title>Adorable Split Image Pop with JavaScript</title>
   <style>
     body {
       margin: 0;
@@ -28,6 +28,7 @@
       overflow: hidden;
       animation: popScale 0.6s ease-out 1.5s forwards;
       transform: scale(0.95);
+      opacity: 0;
     }
 
     .half {
@@ -75,15 +76,54 @@
         transform: scale(1);
       }
     }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
   </style>
 </head>
 <body>
   <h1>Welcome!</h1>
-  <p>This image slides in and pops up cutely:</p>
+  <p>This image will slide in and pop up cutely:</p>
 
-  <div class="image-wrapper">
+  <div class="image-wrapper" id="imageWrapper">
     <div class="half left-half"></div>
     <div class="half right-half"></div>
   </div>
+
+  <button class="button" onclick="resetAnimation()">Re-run Animation</button>
+
+  <script>
+    window.onload = function () {
+      // Wait until the page is loaded to start the animation
+      let imageWrapper = document.getElementById("imageWrapper");
+      imageWrapper.style.opacity = 1;  // Make the image wrapper visible after page load
+    };
+
+    function resetAnimation() {
+      // Reset the animation by removing and re-adding the image-wrapper
+      let imageWrapper = document.getElementById("imageWrapper");
+      
+      // Remove the wrapper and add it back after a small delay
+      imageWrapper.style.animation = "none";  // Stop the current animation
+      imageWrapper.offsetHeight; // Trigger reflow (recalculate the element's height)
+      imageWrapper.style.animation = "";  // Restart the animation
+      imageWrapper.style.opacity = 0;  // Hide it first
+
+      setTimeout(function () {
+        imageWrapper.style.opacity = 1;  // Make it visible again after reset
+      }, 500);  // Delay in milliseconds before making it visible again
+    }
+  </script>
 </body>
 </html>
