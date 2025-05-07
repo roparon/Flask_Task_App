@@ -1,108 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Fortune Insight</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curtain Closing Effect</title>
   <style>
-    body {
+    body, html {
       margin: 0;
-      background: #f4f6f8;
-      font-family: 'Helvetica Neue', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 0;
+      overflow: hidden;
       height: 100vh;
-      color: #333;
+      background-color: white;
     }
 
-    .container {
-      background: white;
-      padding: 2rem 2.5rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    .curtain {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      background-color: black;
+      z-index: 10;
+      animation: closeCurtains 2s forwards;
+    }
+
+    .left-curtain {
+      left: 0;
+    }
+
+    .right-curtain {
+      right: 0;
+    }
+
+    @keyframes closeCurtains {
+      0% {
+        width: 50%;
+      }
+      100% {
+        width: 0;
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
       text-align: center;
-      width: 100%;
-      max-width: 400px;
-    }
-
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #1a202c;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-      background-color: #007BFF;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #0056b3;
-    }
-
-    .fortune {
-      margin-top: 2rem;
-      font-style: italic;
-      font-size: 1.1rem;
-      padding: 1rem;
-      border-left: 4px solid #007BFF;
-      background: #f1f9ff;
-      border-radius: 6px;
-      display: none;
-      animation: fadeIn 0.5s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    footer {
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      color: #888;
+      padding-top: 20%;
+      font-size: 2rem;
     }
   </style>
 </head>
 <body>
+  <div class="curtain left-curtain"></div>
+  <div class="curtain right-curtain"></div>
 
-  <div class="container">
-    <h1>Discover Your Insight</h1>
-    <button class="btn" onclick="revealFortune()">Reveal Fortune</button>
-    <div class="fortune" id="fortune-box"></div>
-    <footer>&copy; 2025 Insight Generator</footer>
+  <div class="content">
+    <h1>Welcome to My Page</h1>
+    <p>The curtains are closing...</p>
   </div>
-
-  <audio id="ping">
-    <source src="https://www.soundjay.com/buttons/sounds/button-16.mp3" type="audio/mp3">
-  </audio>
-
-  <script>
-    const fortunes = [
-      "Leadership is not a position, it’s a mindset.",
-      "Small steps today lead to big results tomorrow.",
-      "You’re closer to success than you think.",
-      "Change is a signal for growth.",
-      "Consistency outperforms intensity.",
-      "Great ideas often come from quiet moments.",
-      "Your focus determines your reality."
-    ];
-
-    function revealFortune() {
-      const box = document.getElementById('fortune-box');
-      const sound = document.getElementById('ping');
-      const random = fortunes[Math.floor(Math.random() * fortunes.length)];
-      box.textContent = random;
-      box.style.display = 'block';
-      sound.play();
-    }
-  </script>
-
 </body>
 </html>
