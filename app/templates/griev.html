@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Responsive Navbar with Dropdown</title>
+  <title>Excellence Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     body {
@@ -27,94 +27,89 @@
       font-size: 1rem;
     }
 
-    .navbar-toggler-icon {
-      background-color: #ffffff;
-    }
-
     .dropdown-menu {
-      position: absolute;
       background-color: #ffffff;
       border: 1px solid #ddd;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      display: none;
-      min-width: 100%;
-    }
-
-    .dropdown-menu.show {
-      display: block;
-    }
-
-    .dropdown-item {
-      color: #333;
-      padding: 10px 20px;
     }
 
     .dropdown-item:hover {
       background-color: #007bff;
-      color: #ffffff;
+      color: white;
     }
 
     @media (max-width: 991px) {
       .navbar-collapse {
-        position: absolute;
-        top: 100%;
-        right: 0;
         background-color: #343a40;
-        width: 100%;
-        display: none;
-        z-index: 1000;
-      }
-
-      .navbar-collapse.show {
-        display: block;
-      }
-
-      .navbar-nav {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .nav-item {
-        width: 100%;
-      }
-
-      .nav-link {
-        padding: 10px 20px;
-        text-align: left;
-        width: 100%;
       }
 
       .dropdown-menu {
-        position: relative;
         width: 100%;
       }
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 60px 0;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #home {
+      background-color: #007bff;
+    }
+
+    #about {
+      background-color: #28a745;
+    }
+
+    #services {
+      background-color: #ffc107;
+      color: black;
+    }
+
+    #portfolio {
+      background-color: #17a2b8;
+    }
+
+    #blog {
+      background-color: #6c757d;
+    }
+
+    #contact {
+      background-color: #343a40;
+    }
+
+    footer {
+      background-color: #222;
+      color: #ccc;
+      padding: 20px 0;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">My Portfolio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="#">Excellence</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#services">Services</a>
-          </li>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
               More
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#portfolio">Portfolio</a></li>
               <li><a class="dropdown-item" href="#blog">Blog</a></li>
               <li><a class="dropdown-item" href="#contact">Contact</a></li>
@@ -124,5 +119,103 @@
       </div>
     </div>
   </nav>
+
+  <!-- Sections -->
+  <section id="home">
+    <div class="container">
+      <h1>Welcome to My Portfolio</h1>
+      <p class="lead">Showcasing my work, experience, and passion for design and development.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I’m a front-end developer with 3+ years of experience building responsive, modern websites using HTML, CSS, JavaScript, and Bootstrap.</p>
+      <p>My mission is to create intuitive and accessible web experiences that delight users.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2>Services</h2>
+      <ul class="list-unstyled">
+        <li>✔️ Website Design & Development</li>
+        <li>✔️ Responsive Design Implementation</li>
+        <li>✔️ UI/UX Improvements & Redesigns</li>
+        <li>✔️ SEO Optimization & Performance</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="container">
+      <h2>Portfolio</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body text-dark">
+              <h5 class="card-title">Landing Page</h5>
+              <p class="card-text">Built a responsive marketing page using Bootstrap and animations.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body text-dark">
+              <h5 class="card-title">Portfolio Website</h5>
+              <p class="card-text">Personal project featuring a dynamic portfolio with modern UI.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body text-dark">
+              <h5 class="card-title">Admin Dashboard</h5>
+              <p class="card-text">Developed dashboard UI with charts, tables, and dark mode.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <div class="container">
+      <h2>Blog</h2>
+      <p>I write tutorials and articles about web development, trends, and tips for improving UI/UX.</p>
+      <p><em>“The web should empower and inspire.”</em></p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p>Email: <a href="mailto:you@example.com" class="text-white">you@example.com</a></p>
+      <p>GitHub: <a href="https://github.com/yourusername" target="_blank" class="text-white">github.com/yourusername</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank" class="text-white">linkedin.com/in/yourprofile</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Excellence Portfolio. Crafted with ❤️ using HTML, CSS & Bootstrap.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Close dropdown on outside click
+    document.addEventListener('click', function (event) {
+      const dropdown = document.querySelector('.dropdown-menu');
+      const toggle = document.querySelector('.dropdown-toggle');
+
+      if (!dropdown.contains(event.target) && !toggle.contains(event.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+  </script>
 </body>
 </html>
