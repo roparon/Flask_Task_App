@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Professional Landing Page</title>
   <style>
+    :root {
+      --primary-color: #1e3a8a; /* Deep blue */
+      --secondary-color: #3b82f6; /* Sky blue */
+      --bg-color: #f8fafc; /* Light gray */
+      --text-color: #333;
+      --accent-color: #0ea5e9; /* Light blue */
+      --nav-bg: #1e293b; /* Dark slate */
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -12,13 +21,12 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: var(--bg-color);
+      color: var(--text-color);
     }
 
-    /* Navigation Bar */
     nav {
-      background-color: #003366;
+      background-color: var(--nav-bg);
       padding: 15px 20px;
       display: flex;
       justify-content: center;
@@ -32,31 +40,32 @@
       text-decoration: none;
       margin: 0 15px;
       font-weight: 500;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      color: var(--accent-color);
     }
 
-    /* Hero Section */
     header {
       text-align: center;
       padding: 100px 20px;
-      background-color: #0059b3;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.8em;
+      font-size: 3em;
+      font-weight: 600;
     }
 
     header p {
-      font-size: 1.2em;
+      font-size: 1.25em;
       margin-top: 10px;
+      opacity: 0.9;
     }
 
-    /* Section Styling */
     section {
       padding: 60px 20px;
       max-width: 900px;
@@ -64,23 +73,53 @@
     }
 
     section h2 {
-      color: #003366;
-      margin-bottom: 20px;
+      color: var(--primary-color);
       font-size: 2em;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent-color);
+      display: inline-block;
+      padding-bottom: 5px;
     }
 
-    section p {
+    section p, section ul {
       font-size: 1.05em;
-      line-height: 1.6em;
+      line-height: 1.6;
       color: #444;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background-color: #e0e0e0;
+      background-color: #e2e8f0;
       font-size: 0.9em;
       color: #555;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        margin: 10px;
+      }
+
+      header h1 {
+        font-size: 2em;
+      }
+
+      section {
+        padding: 40px 15px;
+      }
     }
   </style>
 </head>
@@ -97,7 +136,65 @@
   <!-- Hero Section -->
   <header>
     <h1>Welcome to My Professional Page</h1>
-    <p>Your one-stop hub for information and services</p>
+    <p>Your trusted partner for digital solutions</p>
   </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a digital professional with expertise in full-stack web development, UX strategy,
+      and business optimization. My mission is to deliver reliable, scalable solutions
+      that drive measurable results.
+    </p>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2>Services</h2>
+    <p>I offer comprehensive services tailored to your needs, including:</p>
+    <ul>
+      <li>Custom Web Application Development</li>
+      <li>User Interface & Experience Design</li>
+      <li>Search Engine Optimization (SEO)</li>
+      <li>Technical Consulting & Code Audits</li>
+    </ul>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <p>
+      Here are some highlighted projects:
+    </p>
+    <ul>
+      <li><strong>eCommerce Platform:</strong> Built for high-traffic retail with payment integration</li>
+      <li><strong>Corporate Intranet:</strong> Secure internal tools for enterprise collaboration</li>
+      <li><strong>Analytics Dashboard:</strong> Real-time metrics for business intelligence</li>
+      <li><strong>Portfolio Website:</strong> Lightweight, elegant personal brand showcase</li>
+    </ul>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      Let's connect! You can reach me at <strong>your.email@example.com</strong>, or through
+      my professional profiles on <a href="#">LinkedIn</a> and <a href="#">GitHub</a>.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Your Name. All rights reserved.
+  </footer>
+
 </body>
 </html>
+<!-- This is a simple professional landing page template with a sticky navigation bar, hero section, and responsive design. -->
+<!-- The page includes sections for about, services, portfolio, and contact information. -->
+<!-- The design is clean and modern, using a color palette of deep blue, sky blue, and light gray. -->
+<!-- The layout is mobile-friendly, ensuring a good user experience on all devices. -->
+<!-- The footer contains copyright information. -->
+<!-- The page is styled using CSS variables for easy customization. -->
+<!-- The HTML structure is semantic, using appropriate tags for each section. -->     
