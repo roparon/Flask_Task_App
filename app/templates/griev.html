@@ -23,6 +23,12 @@
       color: var(--text-color);
     }
 
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
     nav {
       position: sticky;
       top: 0;
@@ -63,9 +69,7 @@
     }
 
     main {
-      padding: 60px 20px 100px; /* Add bottom padding for fixed footer */
-      max-width: 900px;
-      margin: auto;
+      padding: 60px 0 100px;
     }
 
     section {
@@ -125,50 +129,61 @@
   </nav>
 
   <header>
-    <h1>Your Name</h1>
-    <p>Front-End Developer | UI/UX Enthusiast | Web Performance Advocate</p>
+    <div class="container">
+      <h1>Your Name</h1>
+      <p>Front-End Developer | UI/UX Enthusiast | Web Performance Advocate</p>
+    </div>
   </header>
 
-  <main>
+  <main class="container">
     <section id="about">
       <h2>About Me</h2>
       <p>
-        I am a passionate front-end developer with a knack for creating
-        responsive and user-friendly web applications. I love turning complex
-        problems into simple, beautiful, and intuitive designs.
-      </p>
-      <p>
-        I have experience in HTML, CSS, and JavaScript, and I'm always eager to
-        learn new technologies and improve my skills.
-      </p>
-      <p>
-        In my free time, I enjoy contributing to open-source projects and
-        exploring the latest trends in web development.
+        I'm a passionate front-end developer who builds responsive, accessible, and fast websites.
+        I focus on clean code, great UX, and scalable solutions using modern front-end tools and frameworks.
       </p>
     </section>
+
     <section id="skills">
       <h2>Skills</h2>
       <ul>
-        <li>HTML5, CSS3, JavaScript</li>
-        <li>Responsive Web Design</li>
-        <li>React.js, Vue.js</li>
-        <li>Version Control (Git)</li>
-        <li>Web Performance Optimization</li>
-        <li>Accessibility (a11y)</li>
+        <li>HTML5, CSS3 (Flexbox, Grid, Responsive Design)</li>
+        <li>JavaScript (ES6+), DOM Manipulation</li>
+        <li>React.js, Vue.js (optional)</li>
+        <li>Version Control (Git, GitHub)</li>
+        <li>Accessibility (WCAG), SEO Best Practices</li>
+        <li>Basic Node.js and REST APIs</li>
       </ul>
     </section>
+
     <section id="projects">
       <h2>Projects</h2>
       <ul>
-        <li>
-          <strong>Project 1:</strong> A responsive portfolio website built with
-          HTML, CSS, and JavaScript. Check it out
-          <a class="inline-link" href=" 
+        <li><strong>Portfolio Website:</strong> This very site you're browsing!</li>
+        <li><strong>Weather App:</strong> JavaScript app using real-time API and responsive UI</li>
+        <li><strong>Landing Page:</strong> Built with Flexbox and smooth scroll navigation</li>
+        <li><strong>Task Manager:</strong> React-based CRUD app with local storage</li>
+      </ul>
+      <p>
+        View all my work on <a class="inline-link" href="https://github.com/yourusername" target="_blank">GitHub</a>.
+      </p>
+    </section>
 
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Feel free to reach out via email at <strong>your.email@example.com</strong>, or connect with me:
+      </p>
+      <ul>
+        <li><a class="inline-link" href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></li>
+        <li><a class="inline-link" href="https://github.com/yourusername" target="_blank">GitHub</a></li>
+        <li><a class="inline-link" href="https://twitter.com/yourhandle" target="_blank">Twitter</a></li>
+      </ul>
+    </section>
   </main>
 
   <footer>
-    &copy; 2025 Your Name. Built with ❤️ and HTML/CSS/JS.
+    &copy; 2025 Your Name. Built with ❤️ using HTML, CSS, and JavaScript.
   </footer>
 
 </body>
