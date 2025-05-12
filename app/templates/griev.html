@@ -3,68 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professional Landing Page</title>
+  <title>Your Name | Front-End Developer</title>
   <style>
     :root {
       --primary-color: #1e3a8a;
-      --secondary-color: #3b82f6;
-      --bg-color: #f8fafc;
-      --text-color: #333;
       --accent-color: #0ea5e9;
+      --text-color: #1f2937;
+      --bg-color: #f9fafb;
+      --footer-bg: #e5e7eb;
       --nav-bg: #1e293b;
     }
 
     html, body {
-      height: 100%;
       margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
       background-color: var(--bg-color);
       color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-    }
-
-    main {
-      padding-bottom: 80px; /* Adjust based on footer height */
-    }
-    footer {
-      background-color: #e2e8f0;
-      padding: 20px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #555;
-    }
-    footer a {
-      color: var(--accent-color);
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-    body::-webkit-scrollbar {
-      width: 8px;
-    }
-    body::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-    body::-webkit-scrollbar-thumb {
-      background: var(--accent-color);
-      border-radius: 10px;
-    }
-    body::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-color);
-    }    
-    html {
-      scroll-behavior: smooth;
     }
 
     nav {
-      background-color: var(--nav-bg);
-      padding: 15px 20px;
-      display: flex;
-      justify-content: center;
       position: sticky;
       top: 0;
+      background-color: var(--nav-bg);
+      display: flex;
+      justify-content: center;
+      padding: 15px 20px;
       z-index: 1000;
     }
 
@@ -83,41 +48,36 @@
     header {
       text-align: center;
       padding: 100px 20px;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
       color: white;
     }
 
     header h1 {
-      margin: 0;
       font-size: 3em;
-      font-weight: 600;
+      margin: 0;
     }
 
     header p {
-      font-size: 1.25em;
       margin-top: 10px;
-      opacity: 0.9;
+      font-size: 1.2em;
+    }
+
+    main {
+      padding: 60px 20px 100px; /* Add bottom padding for fixed footer */
+      max-width: 900px;
+      margin: auto;
     }
 
     section {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
+      margin-bottom: 60px;
     }
 
     section h2 {
       color: var(--primary-color);
       font-size: 2em;
-      margin-bottom: 20px;
       border-bottom: 2px solid var(--accent-color);
-      display: inline-block;
       padding-bottom: 5px;
-    }
-
-    section p, section ul {
-      font-size: 1.05em;
-      line-height: 1.6;
-      color: #444;
+      display: inline-block;
     }
 
     ul {
@@ -128,10 +88,18 @@
       margin-bottom: 10px;
     }
 
+    a.inline-link {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
     footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: var(--footer-bg);
       text-align: center;
-      padding: 20px;
-      background-color: #e2e8f0;
+      padding: 15px;
       font-size: 0.9em;
       color: #555;
     }
@@ -141,16 +109,8 @@
         flex-wrap: wrap;
       }
 
-      nav a {
-        margin: 10px;
-      }
-
       header h1 {
         font-size: 2em;
-      }
-
-      section {
-        padding: 40px 15px;
       }
     }
   </style>
@@ -159,32 +119,65 @@
 
   <nav>
     <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <main>
-    <header>
-      <h1>Welcome to My Professional Page</h1>
-      <p>Your trusted partner for digital solutions</p>
-    </header>
+  <header>
+    <h1>Your Name</h1>
+    <p>Front-End Developer | UI/UX Enthusiast | Web Performance Advocate</p>
+  </header>
 
-    <section id="services">
-      <h2>Services</h2>
-      <p>I offer comprehensive services tailored to your needs, including:</p>
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I'm a passionate front-end developer who builds responsive, accessible, and fast websites.
+        I focus on clean code, great UX, and scalable solutions using modern front-end tools and frameworks.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
       <ul>
-        <li>Custom Web Application Development</li>
-        <li>User Interface & Experience Design</li>
-        <li>Search Engine Optimization (SEO)</li>
-        <li>Technical Consulting & Code Audits</li>
+        <li>HTML5, CSS3 (Flexbox, Grid, Responsive Design)</li>
+        <li>JavaScript (ES6+), DOM Manipulation</li>
+        <li>React.js, Vue.js (optional)</li>
+        <li>Version Control (Git, GitHub)</li>
+        <li>Accessibility (WCAG), SEO Best Practices</li>
+        <li>Basic Node.js and REST APIs</li>
       </ul>
     </section>
 
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>Portfolio Website:</strong> This very site you're browsing!</li>
+        <li><strong>Weather App:</strong> JavaScript app using real-time API and responsive UI</li>
+        <li><strong>Landing Page:</strong> Built with Flexbox and smooth scroll navigation</li>
+        <li><strong>Task Manager:</strong> React-based CRUD app with local storage</li>
+      </ul>
+      <p>
+        View all my work on <a class="inline-link" href="https://github.com/yourusername" target="_blank">GitHub</a>.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Feel free to reach out via email at <strong>your.email@example.com</strong>, or connect with me:
+      </p>
+      <ul>
+        <li><a class="inline-link" href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></li>
+        <li><a class="inline-link" href="https://github.com/yourusername" target="_blank">GitHub</a></li>
+        <li><a class="inline-link" href="https://twitter.com/yourhandle" target="_blank">Twitter</a></li>
+      </ul>
+    </section>
   </main>
 
   <footer>
-    &copy; 2025 Your Name. All rights reserved.
+    &copy; 2025 Your Name. Built with ❤️ and HTML/CSS/JS.
   </footer>
 
 </body>
