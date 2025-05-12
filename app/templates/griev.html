@@ -14,15 +14,22 @@
       --nav-bg: #1e293b;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     nav {
@@ -101,7 +108,6 @@
       background-color: #e2e8f0;
       font-size: 0.9em;
       color: #555;
-      margin-top: 40px;
     }
 
     @media (max-width: 600px) {
@@ -132,55 +138,57 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <header>
-    <h1>Welcome to My Professional Page</h1>
-    <p>Your trusted partner for digital solutions</p>
-  </header>
+  <main>
+    <header>
+      <h1>Welcome to My Professional Page</h1>
+      <p>Your trusted partner for digital solutions</p>
+    </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I am a digital professional with expertise in full-stack web development, UX strategy,
-      and business optimization. My mission is to deliver reliable, scalable solutions
-      that drive measurable results.
-    </p>
-  </section>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a digital professional with expertise in full-stack web development, UX strategy,
+        and business optimization. My mission is to deliver reliable, scalable solutions
+        that drive measurable results.
+      </p>
+    </section>
 
-  <section id="services">
-    <h2>Services</h2>
-    <p>I offer comprehensive services tailored to your needs, including:</p>
-    <ul>
-      <li>Custom Web Application Development</li>
-      <li>User Interface & Experience Design</li>
-      <li>Search Engine Optimization (SEO)</li>
-      <li>Technical Consulting & Code Audits</li>
-    </ul>
-  </section>
+    <section id="services">
+      <h2>Services</h2>
+      <p>I offer comprehensive services tailored to your needs, including:</p>
+      <ul>
+        <li>Custom Web Application Development</li>
+        <li>User Interface & Experience Design</li>
+        <li>Search Engine Optimization (SEO)</li>
+        <li>Technical Consulting & Code Audits</li>
+      </ul>
+    </section>
 
-  <section id="portfolio">
-    <h2>Portfolio</h2>
-    <p>
-      Here are some highlighted projects:
-    </p>
-    <ul>
-      <li><strong>eCommerce Platform:</strong> Built for high-traffic retail with payment integration</li>
-      <li><strong>Corporate Intranet:</strong> Secure internal tools for enterprise collaboration</li>
-      <li><strong>Analytics Dashboard:</strong> Real-time metrics for business intelligence</li>
-      <li><strong>Portfolio Website:</strong> Lightweight, elegant personal brand showcase</li>
-    </ul>
-  </section>
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <p>
+        Here are some highlighted projects:
+      </p>
+      <ul>
+        <li><strong>eCommerce Platform:</strong> Built for high-traffic retail with payment integration</li>
+        <li><strong>Corporate Intranet:</strong> Secure internal tools for enterprise collaboration</li>
+        <li><strong>Analytics Dashboard:</strong> Real-time metrics for business intelligence</li>
+        <li><strong>Portfolio Website:</strong> Lightweight, elegant personal brand showcase</li>
+      </ul>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      Let's connect! You can reach me at <strong>your.email@example.com</strong>, or through
-      my professional profiles on <a href="#">LinkedIn</a> and <a href="#">GitHub</a>.
-    </p>
-  </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Let's connect! You can reach me at <strong>your.email@example.com</strong>, or through
+        my professional profiles on <a href="#">LinkedIn</a> and <a href="#">GitHub</a>.
+      </p>
+    </section>
+  </main>
 
   <footer>
     &copy; 2025 Your Name. All rights reserved.
   </footer>
 
 </body>
-</html>   
+</html>
