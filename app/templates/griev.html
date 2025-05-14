@@ -3,8 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name | Front-End Developer</title>
+  <title>Rop Aron | Front-End Developer</title>
   <style>
+    :root {
+      --bg-color: #f4f4f4;
+      --text-color: #333;
+      --nav-bg: #fff;
+      --accent-color: #007acc;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #1a1a1a;
+      --text-color: #f4f4f4;
+      --nav-bg: #2a2a2a;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
@@ -25,36 +38,172 @@
       top: 0;
       background-color: var(--nav-bg);
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
       padding: 15px 20px;
       z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-  
+
+    nav .links a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav .links a:hover {
+      color: var(--accent-color);
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      background: none;
+      border: 1px solid var(--text-color);
+      color: var(--text-color);
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    header {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+
+    section {
+      margin: 60px 0;
+    }
+
+    h2 {
+      border-bottom: 2px solid var(--accent-color);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .skills ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills li {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: #fff;
+      padding: 8px 12px;
+      margin: 5px;
+      border-radius: 4px;
+    }
+
+    .projects .project {
+      margin-bottom: 20px;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact input, .contact textarea {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .contact button {
+      background-color: var(--accent-color);
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .contact button:hover {
+      background-color: #005f99;
+    }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
   </nav>
 
   <header>
     <div class="container">
       <h1>Rop Aron</h1>
+      <p>Front-End Developer passionate about building modern web experiences.</p>
     </div>
   </header>
 
   <main class="container">
     <section id="about">
       <h2>About Me</h2>
+      <p>
+        I'm a front-end developer with a focus on creating responsive and accessible websites. 
+        I enjoy turning complex problems into simple, beautiful, and intuitive designs.
+      </p>
     </section>
 
-  
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>React</li>
+        <li>Git</li>
+        <li>Responsive Design</li>
+      </ul>
+    </section>
 
+    <section id="projects" class="projects">
+      <h2>Projects</h2>
+      <div class="project">
+        <h3>Portfolio Website</h3>
+        <p>A personal website to showcase my skills, projects, and resume.</p>
+      </div>
+      <div class="project">
+        <h3>Weather App</h3>
+        <p>A web app that displays real-time weather data using a weather API.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <form>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
   </main>
+
+  <script>
+    function toggleTheme() {
+      document.body.dataset.theme =
+        document.body.dataset.theme === "dark" ? "light" : "dark";
+    }
+
+    // Set default theme to light
+    document.body.dataset.theme = "light";
+  </script>
 
 </body>
 </html>
