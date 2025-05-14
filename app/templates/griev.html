@@ -2,284 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rop Aron | Front-End Developer</title>
-  <style>
-    :root {
-      --bg-color: #f9f9f9;
-      --text-color: #111;
-      --nav-bg: #ffffff;
-      --accent-color: #1e90ff;
-      --card-bg: #fff;
-      --border-color: #e0e0e0;
-    }
-
-    [data-theme="dark"] {
-      --bg-color: #1e1e1e;
-      --text-color: #f5f5f5;
-      --nav-bg: #2b2b2b;
-      --card-bg: #2f2f2f;
-      --border-color: #444;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      scroll-behavior: smooth;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 0 20px;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      background-color: var(--nav-bg);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid var(--border-color);
-      z-index: 1000;
-    }
-
-    nav a {
-      color: var(--text-color);
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--accent-color);
-    }
-
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--text-color);
-      color: var(--text-color);
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    header {
-      text-align: center;
-      padding: 80px 20px 40px;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: var(--text-color);
-    }
-
-    section {
-      padding: 60px 0;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      border-left: 5px solid var(--accent-color);
-      padding-left: 15px;
-    }
-
-    .skills ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 0;
-      margin: 0;
-    }
-
-    .skills li {
-      background-color: var(--accent-color);
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .project {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid var(--border-color);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .project:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    }
-
-    .project h3 {
-      margin-top: 0;
-      color: var(--accent-color);
-    }
-
-    .contact form {
-      display: grid;
-      gap: 15px;
-      max-width: 600px;
-    }
-
-    input, textarea {
-      padding: 12px;
-      font-size: 1rem;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      background: var(--card-bg);
-      color: var(--text-color);
-    }
-
-    button {
-      padding: 12px 20px;
-      font-size: 1rem;
-      background: var(--accent-color);
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #006edc;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 0;
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav .links {
-        display: flex;
-        flex-direction: column;
-      }
-
-      nav .links a {
-        margin: 10px 0;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Web Styling Techniques</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
   <nav>
-    <div class="links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+    <div class="container">
+      <h1>Web Styling Showcase</h1>
+      <ul class="nav-links">
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#colors">Color Palettes</a></li>
+        <li><a href="#layouts">Layouts</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#accessibility">Accessibility</a></li>
+      </ul>
     </div>
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
   </nav>
 
-  <header>
-    <div class="container">
-      <h1>Rop Aron</h1>
-      <p>Front-End Developer | Clean Code, Beautiful Interfaces</p>
-    </div>
-  </header>
-
-  <main class="container">
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I specialize in building interactive, responsive websites using modern front-end technologies.
-        I’m passionate about user experience, clean code, and delivering real value to users.
-      </p>
+  <main>
+    <section id="introduction" class="section">
+      <h2>Welcome!</h2>
+      <p>This site showcases various modern CSS styling techniques and design principles to demonstrate my front-end development skills.</p>
     </section>
 
-    <section id="skills" class="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li>HTML5</li>
-        <li>CSS3</li>
-        <li>JavaScript</li>
-        <li>React</li>
-        <li>Tailwind</li>
-        <li>Git/GitHub</li>
-        <li>Figma</li>
-      </ul>
-    </section>
-
-    <section id="projects" class="projects">
-      <h2>Projects</h2>
-
-      <div class="project">
-        <h3>Portfolio Website</h3>
-        <p>A responsive site to showcase my projects and resume. Built with HTML, CSS, and JS.</p>
-      </div>
-
-      <div class="project">
-        <h3>Todo App</h3>
-        <p>A dynamic to-do list application built in React with local storage integration.</p>
-      </div>
-
-      <div class="project">
-        <h3>Weather Dashboard</h3>
-        <p>A weather app using OpenWeather API, featuring live search and responsive layout.</p>
+    <section id="typography" class="section">
+      <h2>Typography Showcase</h2>
+      <div class="typography-examples">
+        <h1>Main Heading</h1>
+        <h2>Subheading</h2>
+        <p>This is a paragraph demonstrating <strong>bold</strong>, <em>italic</em>, UPPERCASE, and lowercase text. It also shows <span class="highlight">highlighted text</span>.</p>
       </div>
     </section>
 
-    <section id="contact" class="contact">
-      <h2>Contact</h2>
-      <form>
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
+    <section id="colors" class="section">
+      <h2>Color Palette Exploration</h2>
+      <div class="palette-container">
+        <div class="palette">
+          <h3>Oceanic</h3>
+          <div class="color primary" data-color="#1e90ff"></div>
+          <div class="color secondary" data-color="#87cefa"></div>
+          <div class="color accent" data-color="#ff6347"></div>
+        </div>
+        <div class="palette">
+          <h3>Earthy</h3>
+          <div class="color primary" data-color="#8b4513"></div>
+          <div class="color secondary" data-color="#d2b48c"></div>
+          <div class="color accent" data-color="#228b22"></div>
+        </div>
+        <div class="palette">
+          <h3>Minimal</h3>
+          <div class="color primary" data-color="#333"></div>
+          <div class="color secondary" data-color="#666"></div>
+          <div class="color accent" data-color="#f5f5f5"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="layouts" class="section">
+      <h2>Layout Techniques</h2>
+      <h3>Flexbox Layout</h3>
+      <div class="flexbox-example">
+        <div>Item 1</div><div>Item 2</div><div>Item 3</div>
+      </div>
+
+      <h3>Grid Layout</h3>
+      <div class="grid-example">
+        <div>Grid 1</div><div>Grid 2</div><div>Grid 3</div><div>Grid 4</div>
+      </div>
+    </section>
+
+    <section id="components" class="section">
+      <h2>Component Styling</h2>
+
+      <h3>Buttons</h3>
+      <button class="btn primary">Primary</button>
+      <button class="btn secondary">Secondary</button>
+      <button class="btn outline">Outline</button>
+
+      <h3>Forms</h3>
+      <form class="styled-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name" />
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" />
+        <button type="submit">Submit</button>
       </form>
+
+      <h3>Cards</h3>
+      <div class="card-container">
+        <div class="card">
+          <h4>Card Title</h4>
+          <p>This is an example of a styled card. It includes a heading and text content.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="accessibility" class="section">
+      <h2>Accessibility</h2>
+      <p>This page uses semantic HTML tags, proper label elements, and clear focus styles to ensure better accessibility. ARIA is used where appropriate.</p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Rop Aron. All rights reserved.</p>
+    <p>&copy; 2025 Your Name. View source to see the code and styling techniques used!</p>
   </footer>
 
   <script>
-    function toggleTheme() {
-      const current = document.body.dataset.theme;
-      document.body.dataset.theme = current === "dark" ? "light" : "dark";
-    }
-
-    // Default theme
-    document.body.dataset.theme = "light";
+    document.querySelectorAll('.color').forEach(el => {
+      el.style.backgroundColor = el.dataset.color;
+      el.textContent = el.dataset.color;
+    });
   </script>
-
 </body>
 </html>
