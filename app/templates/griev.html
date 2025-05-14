@@ -6,30 +6,39 @@
   <title>Rop Aron | Front-End Developer</title>
   <style>
     :root {
-      --bg-color: #f4f4f4;
-      --text-color: #333;
-      --nav-bg: #fff;
-      --accent-color: #007acc;
+      --bg-color: #f9f9f9;
+      --text-color: #111;
+      --nav-bg: #ffffff;
+      --accent-color: #1e90ff;
+      --card-bg: #fff;
+      --border-color: #e0e0e0;
     }
 
     [data-theme="dark"] {
-      --bg-color: #1a1a1a;
-      --text-color: #f4f4f4;
-      --nav-bg: #2a2a2a;
+      --bg-color: #1e1e1e;
+      --text-color: #f5f5f5;
+      --nav-bg: #2b2b2b;
+      --card-bg: #2f2f2f;
+      --border-color: #444;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      scroll-behavior: smooth;
       background-color: var(--bg-color);
       color: var(--text-color);
+      scroll-behavior: smooth;
+      line-height: 1.6;
     }
 
     .container {
-      max-width: 1000px;
-      margin: 0 auto;
+      max-width: 1100px;
+      margin: auto;
       padding: 0 20px;
     }
 
@@ -40,95 +49,150 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border-color);
       z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    nav .links a {
-      margin: 0 15px;
-      text-decoration: none;
+    nav a {
       color: var(--text-color);
+      text-decoration: none;
+      margin: 0 15px;
       font-weight: 500;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
     }
 
-    nav .links a:hover {
+    nav a:hover {
       color: var(--accent-color);
     }
 
     .theme-toggle {
-      cursor: pointer;
       background: none;
       border: 1px solid var(--text-color);
       color: var(--text-color);
       padding: 5px 10px;
-      border-radius: 5px;
+      border-radius: 4px;
+      cursor: pointer;
       font-size: 14px;
     }
 
     header {
-      padding: 60px 0;
       text-align: center;
+      padding: 80px 20px 40px;
     }
 
-    h1 {
-      font-size: 3em;
-      margin: 0;
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: var(--text-color);
     }
 
     section {
-      margin: 60px 0;
+      padding: 60px 0;
     }
 
     h2 {
-      border-bottom: 2px solid var(--accent-color);
-      display: inline-block;
-      padding-bottom: 5px;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--accent-color);
+      padding-left: 15px;
     }
 
     .skills ul {
       list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
       padding: 0;
+      margin: 0;
     }
 
     .skills li {
-      display: inline-block;
       background-color: var(--accent-color);
       color: #fff;
-      padding: 8px 12px;
-      margin: 5px;
-      border-radius: 4px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
     }
 
-    .projects .project {
-      margin-bottom: 20px;
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .project {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+
+    .project h3 {
+      margin-top: 0;
+      color: var(--accent-color);
     }
 
     .contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      display: grid;
+      gap: 15px;
+      max-width: 600px;
     }
 
-    .contact input, .contact textarea {
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+    input, textarea {
+      padding: 12px;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: var(--card-bg);
+      color: var(--text-color);
     }
 
-    .contact button {
-      background-color: var(--accent-color);
+    button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      background: var(--accent-color);
       color: #fff;
       border: none;
-      padding: 10px 15px;
+      border-radius: 6px;
       cursor: pointer;
-      border-radius: 4px;
     }
 
-    .contact button:hover {
-      background-color: #005f99;
+    button:hover {
+      background: #006edc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav .links {
+        display: flex;
+        flex-direction: column;
+      }
+
+      nav .links a {
+        margin: 10px 0;
+      }
     }
   </style>
 </head>
@@ -147,7 +211,7 @@
   <header>
     <div class="container">
       <h1>Rop Aron</h1>
-      <p>Front-End Developer passionate about building modern web experiences.</p>
+      <p>Front-End Developer | Clean Code, Beautiful Interfaces</p>
     </div>
   </header>
 
@@ -155,9 +219,41 @@
     <section id="about">
       <h2>About Me</h2>
       <p>
-        I'm a front-end developer with a focus on creating responsive and accessible websites. 
-        I enjoy turning complex problems into simple, beautiful, and intuitive designs.
+        I specialize in building interactive, responsive websites using modern front-end technologies.
+        I’m passionate about user experience, clean code, and delivering real value to users.
       </p>
+    </section>
+
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+        <li>React</li>
+        <li>Tailwind</li>
+        <li>Git/GitHub</li>
+        <li>Figma</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="projects">
+      <h2>Projects</h2>
+
+      <div class="project">
+        <h3>Portfolio Website</h3>
+        <p>A responsive site to showcase my projects and resume. Built with HTML, CSS, and JS.</p>
+      </div>
+
+      <div class="project">
+        <h3>Todo App</h3>
+        <p>A dynamic to-do list application built in React with local storage integration.</p>
+      </div>
+
+      <div class="project">
+        <h3>Weather Dashboard</h3>
+        <p>A weather app using OpenWeather API, featuring live search and responsive layout.</p>
+      </div>
     </section>
 
     <section id="contact" class="contact">
@@ -170,5 +266,20 @@
       </form>
     </section>
   </main>
+
+  <footer>
+    <p>&copy; 2025 Rop Aron. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const current = document.body.dataset.theme;
+      document.body.dataset.theme = current === "dark" ? "light" : "dark";
+    }
+
+    // Default theme
+    document.body.dataset.theme = "light";
+  </script>
+
 </body>
 </html>
