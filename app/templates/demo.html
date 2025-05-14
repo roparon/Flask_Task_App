@@ -1,131 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Bootstrap 5 Site</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    body {
-      padding-top: 56px;
-    }
+/* Reset + Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .hero {
-      background: linear-gradient(90deg, #0d6efd 0%, #6610f2 100%);
-      color: white;
-      padding: 100px 0;
-    }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
 
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: bold;
-    }
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
 
-    .card img {
-      object-fit: cover;
-      height: 200px;
-    }
+nav {
+  background: #1e90ff;
+  color: white;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
 
-    footer {
-      background-color: #f8f9fa;
-      padding: 30px 0;
-    }
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    /* Auto-sizing offcanvas */
-    .offcanvas-auto {
-      width: auto !important;
-      max-width: max-content;
-    }
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
 
-    .offcanvas-body {
-      padding: 1rem;
-    }
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
 
-    .offcanvas-auto .nav-link {
-      white-space: nowrap;
-    }
-  </style>
-</head>
-<body>
+.nav-links a:hover {
+  text-decoration: underline;
+}
 
-  <!-- Navbar with Auto-Sizing Offcanvas -->
-  <nav class="navbar navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">MySite</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+/* Sections */
+.section {
+  padding: 60px 20px;
+  border-bottom: 1px solid #eee;
+}
 
-      <div class="offcanvas offcanvas-end offcanvas-auto text-bg-dark" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/app/templates/about.html">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="/app/templates/services.html">Services</a></li>
-            <li class="nav-item"><a class="nav-link" href="/app/templates/contact.html">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </nav>
+.typography-examples h1,
+.typography-examples h2 {
+  font-family: 'Georgia', serif;
+}
 
-  <!-- Hero Section -->
-  <section class="hero text-center">
-    <div class="container">
-      <h1>Welcome to MySite</h1>
-      <p class="lead">We build amazing web experiences with Bootstrap 5</p>
-      <a href="#" class="btn btn-light btn-lg mt-3">Get Started</a>
-    </div>
-  </section>
+.highlight {
+  background: yellow;
+}
 
-  <!-- Content Section -->
-  <section class="py-5">
-    <div class="container">
-      <h2 class="text-center mb-4">Our Services</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Service 1">
-            <div class="card-body">
-              <h5 class="card-title">Web Development</h5>
-              <p class="card-text">Responsive and modern websites using the latest technologies.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Service 2">
-            <div class="card-body">
-              <h5 class="card-title">UI/UX Design</h5>
-              <p class="card-text">User-centered design for engaging and intuitive interfaces.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Service 3">
-            <div class="card-body">
-              <h5 class="card-title">SEO Optimization</h5>
-              <p class="card-text">Improve your site’s visibility and ranking in search engines.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+/* Color Palettes */
+.palette-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
-  <!-- Footer -->
-  <footer class="text-center">
-    <div class="container">
-      <p class="mb-0">© 2025 MySite. All rights reserved.</p>
-    </div>
-  </footer>
+.palette {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+  width: 200px;
+}
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+.color {
+  height: 40px;
+  margin: 8px 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  border-radius: 4px;
+}
+
+/* Flexbox Example */
+.flexbox-example {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.flexbox-example > div {
+  flex: 1;
+  background: #e0f7fa;
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Grid Example */
+.grid-example {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.grid-example > div {
+  background: #fce4ec;
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  margin: 10px 10px 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.primary {
+  background: #1e90ff;
+  color: white;
+}
+
+.btn.secondary {
+  background: #87cefa;
+  color: #111;
+}
+
+.btn.outline {
+  border: 2px solid #1e90ff;
+  background: transparent;
+  color: #1e90ff;
+}
+
+/* Forms */
+.styled-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+
+.styled-form input,
+.styled-form button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.styled-form input {
+  border
