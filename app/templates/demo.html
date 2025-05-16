@@ -3,71 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modern Frontend with Tailwind</title>
-
-  <!-- Tailwind CSS CDN -->
+  <title>Auto-Typing Headers</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    .typing {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
+    }
+
+    .fade-out {
+      animation: fadeOut 1.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1 }
+      to { opacity: 0 }
+    }
+  </style>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
 
   <!-- Header -->
   <header class="bg-indigo-600 text-white py-12 text-center">
-    <h1 class="text-4xl font-bold">Instruction Hub</h1>
-    <p class="text-lg mt-2">A clean guide powered by Tailwind CSS</p>
+    <h1 id="typingHeader" class="text-4xl font-bold"></h1>
+    <p class="text-lg mt-2">A guide powered by Tailwind CSS</p>
   </header>
 
   <!-- Main Content -->
   <main class="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow mt-10">
-
     <section>
       <h2 class="text-2xl font-semibold text-indigo-600 mb-4">1. Setup</h2>
       <ul class="list-disc pl-6 space-y-2">
         <li>Install a code editor (like VS Code).</li>
         <li>Create a project folder and an <code class="bg-gray-200 px-1 rounded">index.html</code> file.</li>
         <li>Link your stylesheet or use a CSS framework like Tailwind.</li>
-        <li>Test your file in a browser.</li>
       </ul>
     </section>
-
-    <section class="mt-10">
-      <h2 class="text-2xl font-semibold text-indigo-600 mb-4">2. HTML Basics</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>Structure pages with <code class="bg-gray-200 px-1 rounded">&lt;header&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;footer&gt;</code>.</li>
-        <li>Use headings, paragraphs, lists, and links.</li>
-        <li>Embed images and videos.</li>
-      </ul>
-    </section>
-
-    <section class="mt-10">
-      <h2 class="text-2xl font-semibold text-indigo-600 mb-4">3. Styling</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>Use Tailwind utility classes for fast design.</li>
-        <li>Customize with <code class="bg-gray-200 px-1 rounded">bg-</code>, <code>text-</code>, and <code>shadow-</code> classes.</li>
-        <li>Make it responsive with <code class="bg-gray-200 px-1 rounded">md:</code> and <code>lg:</code> prefixes.</li>
-      </ul>
-    </section>
-
-    <section class="mt-10">
-      <h2 class="text-2xl font-semibold text-indigo-600 mb-4">4. What's Next</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>Add interactivity with JavaScript.</li>
-        <li>Organize styles with components or classes.</li>
-        <li>Connect to APIs for real data.</li>
-      </ul>
-    </section>
-
-    <div class="text-center mt-10">
-      <a href="#" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded transition">
-        Start Learning
-      </a>
-    </div>
-
+    <!-- More sections... -->
   </main>
 
-  <!-- Footer -->
   <footer class="text-center text-sm text-gray-500 py-6 mt-10">
-    &copy; 2025 Modern Guide. Built with Tailwind CSS.
+    &copy; 2025 Instruction Hub | With Autotyping & Fade-out
   </footer>
 
+  <!-- Typing JS -->
+  <script>
+    const header = document.getElementById("typingHeader");
+    const text = "Welcome to Instruction Hub!";
+    let index = 0;
+
+    function typeText() {
+      if (index < text.length) {
+        header.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeText, 80);
+      } else {
+        // After 3 seconds, fade out
+        setTimeout(() => {
+          header.classList.add("fade-out");
+        }, 3000);
+      }
+    }
+
+    // Start typing after page load
+    window.onload = () => {
+      header.classList.add("typing");
+      typeText();
+    };
+  </script>
 </body>
 </html>
