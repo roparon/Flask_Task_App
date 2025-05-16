@@ -32,7 +32,6 @@ def users():
 
 
 @app.route('/tasks', methods=['GET', 'POST'])
-@login_required
 def tasks():
     form = TaskForm()
     if current_user.is_authenticated:
@@ -41,17 +40,21 @@ def tasks():
                 title=form.title.data,
                 description=form.description.data,
                 completed=form.completed.data,
-                user_id=current_user.id
-                )
+                user_id=current_user.user_id  # <-- Use current_user.user_id
+            )
             db.session.add(new_task)
             db.session.commit()
             flash(f'"{new_task.title}" added successfully!', 'success')
             return redirect(url_for('tasks'))
+    
     if current_user.is_authenticated:
-        tasks = Task.query.filter_by(user_id=current_user.id).all()
+        tasks = Task.query.filter_by(user_id=current_user.user_id).all()  # <-- Use current_user.user_id
     else:
         flash("Please log in to view your tasks.", "warning")
         return redirect(url_for('login'))
+    
+    return render_template('tasks.html', tasks=tasks, form=form)
+
 
 @app.route('/user_list', methods=['GET'])
 def user_list():
