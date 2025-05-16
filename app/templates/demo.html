@@ -2,29 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Auto-Typing Headers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Autotyping Site</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
     .typing {
       overflow: hidden;
       white-space: nowrap;
-      border-right: 2px solid;
-      width: 0;
-      animation: typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
+      border-right: 2px solid white;
     }
-
     .fade-out {
-      animation: fadeOut 1.5s ease-in-out forwards;
+      animation: fadeOut 1s ease-in-out forwards;
     }
-
     @keyframes fadeOut {
       from { opacity: 1 }
       to { opacity: 0 }
@@ -33,53 +22,62 @@
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
 
-  <!-- Header -->
-  <header class="bg-indigo-600 text-white py-12 text-center">
-    <h1 id="typingHeader" class="text-4xl font-bold"></h1>
-    <p class="text-lg mt-2">A guide powered by Tailwind CSS</p>
+  <!-- Header with Typing -->
+  <header class="bg-indigo-700 text-white py-16 text-center">
+    <h1 id="typingHeader" class="text-4xl font-bold typing mx-auto w-fit"></h1>
+    <p class="text-lg mt-3">Smarter header with looping animation</p>
   </header>
 
   <!-- Main Content -->
   <main class="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow mt-10">
-    <section>
-      <h2 class="text-2xl font-semibold text-indigo-600 mb-4">1. Setup</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>Install a code editor (like VS Code).</li>
-        <li>Create a project folder and an <code class="bg-gray-200 px-1 rounded">index.html</code> file.</li>
-        <li>Link your stylesheet or use a CSS framework like Tailwind.</li>
-      </ul>
-    </section>
-    <!-- More sections... -->
+    <h2 class="text-2xl font-semibold text-indigo-600 mb-4">1. Why it's Smart</h2>
+    <ul class="list-disc pl-6 space-y-2">
+      <li>Types multiple messages in sequence</li>
+      <li>Fades out smoothly between messages</li>
+      <li>Uses Tailwind and pure JS—no libraries needed</li>
+    </ul>
   </main>
 
   <footer class="text-center text-sm text-gray-500 py-6 mt-10">
-    &copy; 2025 Instruction Hub | With Autotyping & Fade-out
+    &copy; 2025 Smart Typing UI | Powered by Tailwind CSS + JavaScript
   </footer>
 
-  <!-- Typing JS -->
+  <!-- Typing Script -->
   <script>
     const header = document.getElementById("typingHeader");
-    const text = "Welcome to Instruction Hub!";
-    let index = 0;
+    const messages = [
+      "Welcome to Instruction Hub!",
+      "Learn to code smarter.",
+      "HTML. CSS. JavaScript. APIs.",
+      "Built with ❤️ using Tailwind."
+    ];
 
-    function typeText() {
-      if (index < text.length) {
-        header.textContent += text.charAt(index);
-        index++;
-        setTimeout(typeText, 80);
+    let messageIndex = 0;
+    let charIndex = 0;
+    let typingSpeed = 60;
+    let holdTime = 1500;
+
+    function typeMessage() {
+      const currentMessage = messages[messageIndex];
+      if (charIndex <= currentMessage.length) {
+        header.textContent = currentMessage.substring(0, charIndex);
+        charIndex++;
+        setTimeout(typeMessage, typingSpeed);
       } else {
-        // After 3 seconds, fade out
         setTimeout(() => {
           header.classList.add("fade-out");
-        }, 3000);
+          setTimeout(() => {
+            header.classList.remove("fade-out");
+            charIndex = 0;
+            messageIndex = (messageIndex + 1) % messages.length;
+            typeMessage();
+          }, 1000); // wait for fade-out to finish
+        }, holdTime);
       }
     }
 
-    // Start typing after page load
-    window.onload = () => {
-      header.classList.add("typing");
-      typeText();
-    };
+    window.onload = typeMessage;
   </script>
+
 </body>
 </html>
