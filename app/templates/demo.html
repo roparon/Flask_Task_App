@@ -3,97 +3,147 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Bootstrap 5 Site</title>
+  <title>All-in-One Instruction Guide</title>
+
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
   <style>
+    :root {
+      --primary-color: #0d6efd;
+      --bg-color: #f8f9fa;
+      --text-color: #343a40;
+      --accent-color: #6c757d;
+    }
+
     body {
-      padding-top: 56px;
+      background-color: var(--bg-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-color);
     }
 
-    .hero {
-      background: linear-gradient(90deg, #0d6efd 0%, #6610f2 100%);
+    header {
+      background: var(--primary-color);
       color: white;
-      padding: 100px 0;
+      padding: 60px 0;
+      text-align: center;
     }
 
-    .card img {
-      object-fit: cover;
-      height: 200px;
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      margin-top: 10px;
+    }
+
+    main {
+      padding: 40px 20px;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-top: 40px;
+    }
+
+    .list-group-item {
+      border: none;
+      background-color: transparent;
+    }
+
+    code {
+      background-color: #e9ecef;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 0.95em;
     }
 
     footer {
-      background-color: #f8f9fa;
-      padding: 30px 0;
+      background-color: #e9ecef;
+      color: var(--accent-color);
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: 60px;
+      font-size: 0.9rem;
     }
 
-    /* Auto-sizing offcanvas */
-    .offcanvas-auto {
-      width: auto !important;
-      max-width: max-content;
+    .card-custom {
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
-    .offcanvas-body {
-      padding: 1rem;
+    .btn-custom {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
     }
 
-    .offcanvas-auto .nav-link {
-      white-space: nowrap;
+    .btn-custom:hover {
+      background-color: #0b5ed7;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar with Auto-Sizing Offcanvas -->
-  <nav class="navbar navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">MySite</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="offcanvas offcanvas-end offcanvas-auto text-bg-dark" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-  <!-- Hero Section -->
-  <section class="hero text-center">
+  <header>
     <div class="container">
-      <h1>Welcome to MySite</h1>
-      <p class="lead">We build amazing web experiences with Bootstrap 5</p>
-      <a href="#" class="btn btn-light btn-lg mt-3">Get Started</a>
+      <h1>Perfectly Styled Instruction Guide</h1>
+      <p class="lead">Using HTML, Bootstrap, CSS Variables, and Inline Styles</p>
     </div>
-  </section>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Service 2">
-            <div class="card-body">
-              <h5 class="card-title">UI/UX Design</h5>
-              <p class="card-text">User-centered design for engaging and intuitive interfaces.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Service 3">
-            <div class="card-body">
-              <h5 class="card-title">SEO Optimization</h5>
-              <p class="card-text">Improve your site’s visibility and ranking in search engines.</p>
-            </div>
-          </div>
-        </div>
+  </header>
+
+  <main class="container">
+    <div class="card-custom">
+      <h2>Step 1: Project Setup</h2>
+      <ul class="list-group list-group-flush mb-4">
+        <li class="list-group-item">Install a code editor (e.g., VS Code).</li>
+        <li class="list-group-item">Create a new folder for your project files.</li>
+        <li class="list-group-item">Inside it, create an <code>index.html</code> file.</li>
+        <li class="list-group-item">Set up your HTML structure with <code>&lt;!DOCTYPE html&gt;</code>.</li>
+      </ul>
+
+      <h2>Step 2: Adding HTML Content</h2>
+      <ul class="list-group list-group-flush mb-4">
+        <li class="list-group-item">Use semantic tags like <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>.</li>
+        <li class="list-group-item">Structure content using <code>&lt;div&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;ul&gt;</code>.</li>
+        <li class="list-group-item">Use <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> for headings and <code>&lt;p&gt;</code> for paragraphs.</li>
+      </ul>
+
+      <h2>Step 3: Styling</h2>
+      <ul class="list-group list-group-flush mb-4">
+        <li class="list-group-item">Use Bootstrap classes like <code>.container</code>, <code>.btn</code>, and <code>.list-group</code>.</li>
+        <li class="list-group-item">Define your own variables with <code>:root</code> and use them throughout your CSS.</li>
+        <li class="list-group-item">Add custom styles in a <code>&lt;style&gt;</code> block in the head.</li>
+        <li class="list-group-item">Use inline styles for small, one-time tweaks like <code>&lt;div style="margin-top:20px;"&gt;</code>.</li>
+      </ul>
+
+      <h2>Step 4: Going Further</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Make the layout responsive with Bootstrap’s grid system.</li>
+        <li class="list-group-item">Add media queries to tweak design on small screens.</li>
+        <li class="list-group-item">Add interactions with JavaScript or Bootstrap JS components.</li>
+      </ul>
+
+      <div class="text-center mt-5">
+        <a href="#" class="btn btn-custom btn-lg">Start Building</a>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="text-center">
-    <div class="container">
-      <p class="mb-0">© 2025 MySite. All rights reserved.</p>
-    </div>
+  <footer>
+    &copy; 2025 All-in-One Guide | Built with 💙 using HTML, CSS & Bootstrap
   </footer>
 
-  <!-- Bootstrap JS -->
+  <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<!--
+  This HTML template serves as a guide for creating a well-structured and styled instruction page.
+  It uses Bootstrap for responsive design and custom CSS for additional styling.
+  The template includes sections for project setup, HTML content, styling, and further enhancements.
