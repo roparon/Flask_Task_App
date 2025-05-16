@@ -3,54 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instruction Guide with Bootstrap</title>
-
-  <!-- Bootstrap 5 CSS CDN -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-
+  <title>My Bootstrap 5 Site</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     body {
-      background-color: #f8f9fa;
+      padding-top: 56px;
     }
-    header {
-      background-color: #0d6efd;
+
+    .hero {
+      background: linear-gradient(90deg, #0d6efd 0%, #6610f2 100%);
       color: white;
-      padding: 40px 0;
+      padding: 100px 0;
     }
-    h1, h2 {
-      margin-bottom: 20px;
+
+    .card img {
+      object-fit: cover;
+      height: 200px;
     }
+
     footer {
-      background-color: #e9ecef;
-      text-align: center;
-      padding: 20px;
-      color: #6c757d;
-      margin-top: 40px;
+      background-color: #f8f9fa;
+      padding: 30px 0;
+    }
+
+    /* Auto-sizing offcanvas */
+    .offcanvas-auto {
+      width: auto !important;
+      max-width: max-content;
+    }
+
+    .offcanvas-body {
+      padding: 1rem;
+    }
+
+    .offcanvas-auto .nav-link {
+      white-space: nowrap;
     }
   </style>
 </head>
-<body>-item">Visual Studio Code</li>
-        <li class="list-group-item">Sublime Text</li>
-    </section>
-    <section>
-      <h2>Publishing Your Website</h2>
-      <p>To publish your website, you can use a web hosting service. Here are some options:</p>
-      <ul class="list-group
-  </main>
+<body>
 
-    <footer>
-      &copy; 2025 Instructional Web Guide
-    </footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    ></script>
-  </body>">
-        <li class="list-group-item">GitHub Pages</li>
-        <li class="list-group-item">Netlify</li>
-        <li class="list-group-item">Vercel</li>
-      </ul>
-    </section>  
+  <!-- Navbar with Auto-Sizing Offcanvas -->
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MySite</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-end offcanvas-auto text-bg-dark" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/app/templates/about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="/app/templates/services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="/app/templates/contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero text-center">
+    <div class="container">
+      <h1>Welcome to MySite</h1>
+      <p class="lead">We build amazing web experiences with Bootstrap 5</p>
+      <a href="#" class="btn btn-light btn-lg mt-3">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Our Services</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Service 1">
+            <div class="card-body">
+              <h5 class="card-title">Web Development</h5>
+              <p class="card-text">Responsive and modern websites using the latest technologies.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Service 2">
+            <div class="card-body">
+              <h5 class="card-title">UI/UX Design</h5>
+              <p class="card-text">User-centered design for engaging and intuitive interfaces.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Service 3">
+            <div class="card-body">
+              <h5 class="card-title">SEO Optimization</h5>
+              <p class="card-text">Improve your site’s visibility and ranking in search engines.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">© 2025 MySite. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
