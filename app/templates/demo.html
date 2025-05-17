@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Sidebar Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
+
+    .sidebar {
+      height: 100vh;
+      width: 200px;
+      background-color: #333;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+
+    .sidebar a {
+      padding: 10px 20px;
+      display: block;
+      color: white;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+    .content {
+      margin-left: 200px;
+      padding: 20px;
+      flex: 1;
+      transition: margin-left 0.3s ease;
+    }
+
+    .content.full-width {
+      margin-left: 0;
+    }
+
+    .toggle-btn {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+  <div class="sidebar" id="sidebar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div class="content" id="mainContent">
+    <h1>Welcome to My Website</h1>
+    <p>This is a simple webpage with a functional sidebar.</p>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const content = document.getElementById('mainContent');
+      sidebar.classList.toggle('hidden');
+      content.classList.toggle('full-width');
+    }
+  </script>
+
+</body>
+</html>
