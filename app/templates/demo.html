@@ -8,10 +8,9 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      display: flex;
     }
 
-    /* Hidden checkbox for toggling */
+    /* Hidden checkbox */
     #sidebar-toggle {
       display: none;
     }
@@ -22,12 +21,13 @@
       height: 100vh;
       background-color: #333;
       color: white;
-      padding-top: 20px;
+      padding-top: 60px; /* Add padding to avoid overlap */
       position: fixed;
       left: 0;
       top: 0;
       transform: translateX(-100%);
       transition: transform 0.3s ease;
+      z-index: 999; /* Ensure it sits above other elements */
     }
 
     .sidebar a {
@@ -46,11 +46,10 @@
       transform: translateX(0);
     }
 
-    /* Content area */
+    /* Main content area */
     .content {
       margin-left: 0;
       padding: 20px;
-      flex: 1;
       transition: margin-left 0.3s ease;
     }
 
@@ -58,7 +57,7 @@
       margin-left: 200px;
     }
 
-    /* Toggle label (button) */
+    /* Toggle label (hamburger) */
     .toggle-label {
       position: fixed;
       top: 10px;
@@ -67,16 +66,16 @@
       color: white;
       padding: 10px 15px;
       cursor: pointer;
-      z-index: 1;
+      z-index: 1000; /* Put above sidebar */
     }
   </style>
 </head>
 <body>
 
-  <!-- Toggle checkbox -->
+  <!-- Checkbox toggle -->
   <input type="checkbox" id="sidebar-toggle" />
 
-  <!-- Toggle button label -->
+  <!-- Toggle button -->
   <label for="sidebar-toggle" class="toggle-label">☰</label>
 
   <!-- Sidebar -->
@@ -87,7 +86,7 @@
     <a href="#">Contact</a>
   </div>
 
-  <!-- Main content -->
+  <!-- Page content -->
   <div class="content">
     <h1>Welcome</h1>
     <p>This is a sidebar layout using only HTML and CSS.</p>
