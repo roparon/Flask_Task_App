@@ -14,6 +14,8 @@
     #sidebar-toggle {
       display: none;
     }
+
+    /* Sidebar */
     .sidebar {
       width: 200px;
       height: 100vh;
@@ -38,10 +40,13 @@
     .sidebar a:hover {
       background-color: #575757;
     }
+
+    /* Toggle sidebar on checkbox checked */
     #sidebar-toggle:checked ~ .sidebar {
       transform: translateX(0);
     }
 
+    /* Toggle button (hamburger) */
     .toggle-label {
       position: fixed;
       top: 10px;
@@ -53,6 +58,7 @@
       z-index: 1002;
     }
 
+    /* Overlay to close sidebar */
     .overlay {
       position: fixed;
       top: 0;
@@ -75,10 +81,14 @@
   </style>
 </head>
 <body>
+
+  <!-- Hidden toggle checkbox -->
   <input type="checkbox" id="sidebar-toggle" />
 
+  <!-- Toggle Button -->
   <label for="sidebar-toggle" class="toggle-label">☰</label>
 
+  <!-- Sidebar -->
   <div class="sidebar">
     <a href="#">Home</a>
     <a href="#">About</a>
