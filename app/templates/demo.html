@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>School Management System - My Portfolio</title>
   <style>
-    /* Reset & Base Styles */
     * {
       margin: 0;
       padding: 0;
@@ -49,13 +48,13 @@
       max-width: 1000px;
       margin: auto;
       opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease;
+      transform: scale(0.98) translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
     section.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1) translateY(0);
     }
 
     .skills {
@@ -126,15 +125,92 @@
 </head>
 <body>
 
+  <header>
+    <h1>School Management System</h1>
+    <p>All-in-one platform for managing school operations</p>
+  </header>
+
+  <nav>
+    <a href="#frontend">Frontend</a>
+    <a href="#backend">Backend</a>
+    <a href="#database">Database</a>
+    <a href="#features">Features</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
   <section id="frontend">
+    <h2>Frontend Skills</h2>
+    <div class="skills">
+      <div class="skill-box">
+        <h3>HTML5 & CSS3</h3>
+        <p>Structured layout with responsive design for all devices.</p>
+      </div>
+      <div class="skill-box">
+        <h3>JavaScript</h3>
+        <p>Interactive elements, form validation, and dynamic updates.</p>
+      </div>
+      <div class="skill-box">
+        <h3>React / Vue (Optional)</h3>
+        <p>Component-based UI for scalable frontend architecture.</p>
+      </div>
     </div>
   </section>
+
+  <section id="backend">
+    <h2>Backend Skills</h2>
+    <div class="skills">
+      <div class="skill-box">
+        <h3>Node.js / PHP / Python (Django/Flask)</h3>
+        <p>RESTful API development, user authentication, and server-side logic.</p>
+      </div>
+      <div class="skill-box">
+        <h3>Express / Laravel / Django</h3>
+        <p>MVC frameworks to organize and structure the application.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="database">
+    <h2>Database Skills</h2>
+    <div class="skills">
+      <div class="skill-box">
+        <h3>MySQL / PostgreSQL</h3>
+        <p>Relational data storage for students, teachers, grades, etc.</p>
+      </div>
+      <div class="skill-box">
+        <h3>MongoDB (Optional)</h3>
+        <p>NoSQL database support for flexible data handling.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>Key Features Implemented</h2>
+    <ul>
+      <li>✔️ Student & Teacher Management</li>
+      <li>✔️ Attendance Tracking</li>
+      <li>✔️ Gradebook & Report Generation</li>
+      <li>✔️ Admin Dashboard</li>
+      <li>✔️ Secure Login System</li>
+      <li>✔️ Notifications & Messaging</li>
+    </ul>
+    <a class="btn" href="https://github.com/yourusername/school-management-system" target="_blank">🔗 View on GitHub</a><br>
+    <a class="btn" href="school-management-system.zip" download>⬇️ Download Project ZIP</a>
+  </section>
+
   <section id="contact">
     <h2>Contact</h2>
     <p>📧 Email: yourname@example.com</p>
     <p>🌐 Portfolio: <a href="https://yourwebsite.com" target="_blank">yourwebsite.com</a></p>
   </section>
 
-</body>
-</html>
+  <footer>
+    <p>&copy; 2025 Your Name. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    const revealOnScroll = () => {
+      const t
