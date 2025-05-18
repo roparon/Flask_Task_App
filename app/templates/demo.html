@@ -209,20 +209,5 @@
     <p>&copy; 2025 Your Name. All rights reserved.</p>
   </footer>
 
-  <script>
-    // Scroll animation logic
-    const sections = document.querySelectorAll("section");
-    const revealOnScroll = () => {
-      const trigger = window.innerHeight * 0.9;
-      sections.forEach(sec => {
-        const secTop = sec.getBoundingClientRect().top;
-        if (secTop < trigger) {
-          sec.classList.add("visible");
-        }
-      });
-    };
-    window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load", revealOnScroll);
-  </script>
 </body>
 </html>
