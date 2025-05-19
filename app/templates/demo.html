@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>School Management System - My Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A complete School Management System project - frontend, backend, database & features." />
+  <meta name="author" content="Your Name" />
+  <title>School Management System | Portfolio</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
   <style>
+    :root {
+      --primary-color: #004080;
+      --secondary-color: #003366;
+      --accent-color: #0055aa;
+      --bg-color: #f0f2f5;
+      --text-color: #333;
+      --white: #fff;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -12,40 +25,42 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f0f2f5;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
       scroll-behavior: smooth;
+      line-height: 1.6;
     }
 
     header {
-      background-color: #004080;
-      color: white;
-      padding: 20px 0;
+      background: var(--primary-color);
+      color: var(--white);
+      padding: 30px 20px;
       text-align: center;
       animation: fadeInDown 1s ease-out;
     }
 
     nav {
-      background-color: #003366;
+      background: var(--secondary-color);
       text-align: center;
     }
 
     nav a {
-      color: white;
-      padding: 14px 20px;
+      color: var(--white);
+      padding: 15px 20px;
       display: inline-block;
       text-decoration: none;
       transition: background 0.3s ease;
+      font-weight: 500;
     }
 
     nav a:hover {
-      background-color: #0055aa;
+      background: var(--accent-color);
     }
 
     section {
-      padding: 40px 20px;
-      max-width: 1000px;
+      padding: 50px 20px;
+      max-width: 1100px;
       margin: auto;
       opacity: 0;
       transform: scale(0.98) translateY(40px);
@@ -57,56 +72,76 @@
       transform: scale(1) translateY(0);
     }
 
+    h2 {
+      margin-bottom: 30px;
+      color: var(--primary-color);
+      text-align: center;
+      font-size: 2em;
+    }
+
     .skills {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
+      justify-content: center;
     }
 
     .skill-box {
       flex: 1 1 300px;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      background: var(--white);
+      border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
-      animation: slideInUp 1s ease forwards;
+      animation: slideInUp 0.7s ease forwards;
     }
 
     .skill-box:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
     }
 
     ul li {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      font-size: 1.1em;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 10px;
-      background: #004080;
-      color: white;
-      padding: 10px 15px;
+      margin-top: 20px;
+      background: var(--primary-color);
+      color: var(--white);
+      padding: 10px 18px;
       text-decoration: none;
-      border-radius: 4px;
+      border-radius: 5px;
+      font-weight: bold;
       transition: background 0.3s ease, transform 0.3s ease;
     }
 
     .btn:hover {
-      background: #0055aa;
+      background: var(--accent-color);
       transform: scale(1.05);
     }
 
     footer {
-      background-color: #003366;
-      color: white;
+      background: var(--secondary-color);
+      color: var(--white);
       text-align: center;
-      padding: 20px 0;
+      padding: 20px;
+      font-size: 0.9em;
       animation: fadeInUp 1s ease-out;
     }
 
-    /* Animations */
+    footer a {
+      color: #aad;
+      text-decoration: none;
+    }
+
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -120,6 +155,13 @@
     @keyframes slideInUp {
       from { transform: translateY(50px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .skills {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
@@ -143,15 +185,15 @@
     <div class="skills">
       <div class="skill-box">
         <h3>HTML5 & CSS3</h3>
-        <p>Structured layout with responsive design for all devices.</p>
+        <p>Structured layout with responsive and accessible design.</p>
       </div>
       <div class="skill-box">
         <h3>JavaScript</h3>
-        <p>Interactive elements, form validation, and dynamic updates.</p>
+        <p>Client-side interactivity, form validation, and event-driven UI.</p>
       </div>
       <div class="skill-box">
         <h3>React / Vue (Optional)</h3>
-        <p>Component-based UI for scalable frontend architecture.</p>
+        <p>Component-driven UI for maintainable and scalable frontend.</p>
       </div>
     </div>
   </section>
@@ -160,12 +202,12 @@
     <h2>Backend Skills</h2>
     <div class="skills">
       <div class="skill-box">
-        <h3>Node.js / PHP / Python (Django/Flask)</h3>
-        <p>RESTful API development, user authentication, and server-side logic.</p>
+        <h3>Node.js / PHP / Python</h3>
+        <p>REST API development, session management, authentication.</p>
       </div>
       <div class="skill-box">
         <h3>Express / Laravel / Django</h3>
-        <p>MVC frameworks to organize and structure the application.</p>
+        <p>Use of MVC frameworks to build robust backend logic.</p>
       </div>
     </div>
   </section>
@@ -175,11 +217,11 @@
     <div class="skills">
       <div class="skill-box">
         <h3>MySQL / PostgreSQL</h3>
-        <p>Relational data storage for students, teachers, grades, etc.</p>
+        <p>Structured, relational data management for core school records.</p>
       </div>
       <div class="skill-box">
         <h3>MongoDB (Optional)</h3>
-        <p>NoSQL database support for flexible data handling.</p>
+        <p>Flexible NoSQL data model for unstructured components.</p>
       </div>
     </div>
   </section>
@@ -187,12 +229,12 @@
   <section id="features">
     <h2>Key Features Implemented</h2>
     <ul>
-      <li>✔️ Student & Teacher Management</li>
-      <li>✔️ Attendance Tracking</li>
-      <li>✔️ Gradebook & Report Generation</li>
-      <li>✔️ Admin Dashboard</li>
-      <li>✔️ Secure Login System</li>
-      <li>✔️ Notifications & Messaging</li>
+      <li>✔️ Student & Teacher Profiles</li>
+      <li>✔️ Attendance Monitoring</li>
+      <li>✔️ Gradebook & Auto Report Cards</li>
+      <li>✔️ Admin Dashboard with Analytics</li>
+      <li>✔️ Role-Based Access & Secure Auth</li>
+      <li>✔️ Notifications & Messaging System</li>
     </ul>
     <a class="btn" href="https://github.com/yourusername/school-management-system" target="_blank">🔗 View on GitHub</a><br>
     <a class="btn" href="school-management-system.zip" download>⬇️ Download Project ZIP</a>
@@ -200,12 +242,12 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>📧 Email: yourname@example.com</p>
+    <p>📧 Email: <a href="mailto:yourname@example.com">yourname@example.com</a></p>
     <p>🌐 Portfolio: <a href="https://yourwebsite.com" target="_blank">yourwebsite.com</a></p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Your Name. All rights reserved.</p>
+    <p>&copy; 2025 Your Name. All rights reserved. Built with 💙</p>
   </footer>
 
   <script>
@@ -216,29 +258,11 @@
       const trigger = window.innerHeight * 0.85;
       sections.forEach(sec => {
         const secTop = sec.getBoundingClientRect().top;
-        if (secTop < trigger) {
-          sec.classList.add("visible");
-        }
+        if (secTop < trigger) sec.classList.add("visible");
       });
     };
 
-    // Animate section on nav link click
     navLinks.forEach(link => {
       link.addEventListener("click", e => {
         e.preventDefault();
-        const id = link.getAttribute("href").substring(1);
-        const target = document.getElementById(id);
-
-        target.scrollIntoView({ behavior: "smooth" });
-
-        // Re-trigger animation
-        target.classList.remove("visible");
-        setTimeout(() => target.classList.add("visible"), 100);
-      });
-    });
-
-    window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load", revealOnScroll);
-  </script>
-</body>
-</html>
+       
