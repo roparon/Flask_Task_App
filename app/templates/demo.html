@@ -240,6 +240,42 @@
     <a class="btn" href="school-management-system.zip" download>⬇️ Download Project ZIP</a>
   </section>
 
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>📧 Email: <a href="mailto:yourname@example.com">yourname@example.com</a></p>
+    <p>🌐 Portfolio: <a href="https://yourwebsite.com" target="_blank">yourwebsite.com</a></p>
+  </section>
+
   <footer>
     <p>&copy; 2025 Your Name. All rights reserved. Built with 💙</p>
   </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const secTop = sec.getBoundingClientRect().top;
+        if (secTop < trigger) sec.classList.add("visible");
+      });
+    };
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const id = link.getAttribute("href").substring(1);
+        const target = document.getElementById(id);
+
+        target.scrollIntoView({ behavior: "smooth" });
+        target.classList.remove("visible");
+        setTimeout(() => target.classList.add("visible"), 100);
+      });
+    });
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
+</body>
+</html>
